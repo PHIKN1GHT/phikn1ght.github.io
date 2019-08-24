@@ -1,5 +1,5 @@
-关于a
-=====
+关于
+====
 
 .. figure:: _static\\avatar.jpg
 	:width: 160px
