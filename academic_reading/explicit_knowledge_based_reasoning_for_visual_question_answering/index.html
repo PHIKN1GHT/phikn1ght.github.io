@@ -1,0 +1,275 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>针对视觉问答的基于知识库的显式推理 &#8212; 旅人札记  文档</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="author" title="关于这些文档" href="../../about/" />
+    <link rel="index" title="索引" href="../../genindex/" />
+    <link rel="search" title="搜索" href="../../search/" />
+    <link rel="next" title="知识体系索引" href="../../indexes/knowledge_base/" />
+    <link rel="prev" title="文献导读索引" href="../../indexes/academic_reading/" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="weblog Blog">
+  
+  
+  <link href="True" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>针对视觉问答的基于知识库的显式推理<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>摘要<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>本文提出了一种能够根据大型知识库里提取出的信息对图像上的内容进行推理的视觉问答方法。其不仅可以给出回答和响应的解释（推理过程），还能够回答比基于LSTM的方法更加复杂的问题。除此之外，本文还提供了一个数据集和评估此类方法的可靠标准。</p>
+<p>原文：Explicit Knowledge-based Reasoning for Visual Question Answering(<a class="reference external" href="https://arxiv.org/abs/1511.02570">https://arxiv.org/abs/1511.02570</a>)</p>
+</div>
+<div class="section" id="id3">
+<h2>引入<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li>大多数视觉问答方法无法处理显示逻辑推理</li>
+<li>主流方法：CNN提取图像特征，丢给LSTM处理。其特点有：</li>
+</ol>
+<ul class="simple">
+<li>对于图像内容直接相关的问题能够很好地回答</li>
+<li>缺乏可解释性，造成无法排除过拟合的可能</li>
+<li>LSTM能编码的信息量相当有限，如果要效果好需要超级大的LSTM</li>
+<li>只能在非常首先的场景下进行显式推理</li>
+</ul>
+<ol class="arabic simple" start="3">
+<li>提出Ahab方法：先检测出图像的相关内容，再将问题转化为知识库上的查询，然后再把查询拿来在图像的内容与知识库上跑。特点：</li>
+</ol>
+<ul class="simple">
+<li>能够处理复杂的依赖于图像内容之外的问题</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>研究背景<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li>初代VQA方法：用语义分析+贝叶斯推理</li>
+<li>主流：CNN+LSTM，两大类：用独立/相同的LSTM处理问题和回答</li>
+<li>回答人类照着图片提出的问题不可避免地需要引入外部的信息。[常识]在某种程度上，整个训练集会提供一些这样的信息，但本身是不灵活也难以扩展，也无法提供回答问题所需的背景信息。这导致难以生成一个大多数VQA方法实际上可以回答的数据集。</li>
+<li>通过构建大规模结构化知识库，知识可以被高效地编码与查询。流行的知识库主要由众包/手工标注的DBpedia,Freebase和Wikidata等，和自动提取的无结构/半结构化的YAGO, OpenIE, NELL和NEIL等。本文使用了DBpedia</li>
+<li>DBpedia知识库提取自Wikipedia，相对其他数据库来说更加准确，对本体的定义也更加完善。</li>
+<li>可以通过一种范式转换将VQA转变成KBQA：吧图像特征和场景标签视作结点，用结点间的无向边表征互相兼容/不互相兼容的关系。同时，把问题转化成RDMBS查询语句。</li>
+<li>我们提供的数据集中，问题由模板生成（分为视觉、常识和知识库推理三类），其中我们假定人类回答知识库推理问题时可以借助维基百科。</li>
+</ol>
+</div>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../../knowledge_base/icpc/">
+    <i class="fa fa-arrow-circle-left"></i>
+    ICPC知识体系概览
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+</div>
+
+  
+  
+  </div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../">旅人札记</a></h1>
+
+
+
+
+
+
+
+
+
+  
+  
+  <h2>
+  
+  <i class="fa fa-calendar"></i>
+    2019年8月17日 
+  
+  </h2>
+
+  <ul>
+    
+
+  
+  <li id="author"><span><i class="fa-fw fa fa-user"></i></span>
+    
+      
+      φKN1GHT
+      
+    </li>
+  
+
+  
+
+  
+
+  
+
+  
+  <li id="tags"><span><i class="fa-fw fa fa-tags"></i>
+      </span>
+    
+      
+      <a href="../../blog/tag/文献导读/">文献导读</a>
+      
+    
+      
+      <a href="../../blog/tag/知识库/">知识库</a>
+      
+    
+      
+      <a href="../../blog/tag/视觉问答/">视觉问答</a>
+      
+    </li>
+  
+  
+  </ul>
+
+
+<h3>导航</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about/">关于</a></li>
+<li class="toctree-l1"><a class="reference external" href="/blog/#://">所有文章</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../indexes/academic_reading/">文献导读索引</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../indexes/academic_reading/#vqa">视觉问答(VQA)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../indexes/knowledge_base/">知识体系索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indexes/academic_review/">学术评论索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indexes/selected_article/">杂文选集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indexes/private_library/">收藏馆</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timestamp/">时间锚</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/tag/">标签</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/icpc/">ICPC</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/文献导读/">文献导读</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/知识库/">知识库</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/视觉问答/">视觉问答</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive/">归档</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2019/">2019 (2)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, φKN1GHT.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/academic_reading/explicit_knowledge_based_reasoning_for_visual_question_answering.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

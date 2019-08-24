@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">weblog Blog</title>
+  <id>True/blog/atom.xml</id>
+  <updated>2019-08-17T00:00:00Z</updated>
+  <link href="True" />
+  <link href="True/blog/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.9.4">ABlog</generator>
+  <entry xml:base="True/blog/atom.xml">
+    <title type="text">针对视觉问答的基于知识库的显式推理</title>
+    <id>True/academic_reading/explicit_knowledge_based_reasoning_for_visual_question_answering/</id>
+    <updated>2019-08-17T00:00:00Z</updated>
+    <published>2019-08-17T00:00:00Z</published>
+    <link href="True/academic_reading/explicit_knowledge_based_reasoning_for_visual_question_answering/" />
+    <author>
+      <name>φKN1GHT</name>
+    </author>
+    <content type="html">&lt;p&gt;本文提出了一种能够根据大型知识库里提取出的信息对图像上的内容进行推理的视觉问答方法。其不仅可以给出回答和响应的解释（推理过程），还能够回答比基于LSTM的方法更加复杂的问题。除此之外，本文还提供了一个数据集和评估此类方法的可靠标准。&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="True/blog/atom.xml">
+    <title type="text">ICPC知识体系概览</title>
+    <id>True/knowledge_base/icpc/</id>
+    <updated>2019-08-11T00:00:00Z</updated>
+    <published>2019-08-11T00:00:00Z</published>
+    <link href="True/knowledge_base/icpc/" />
+    <author>
+      <name>φKN1GHT</name>
+    </author>
+    <content type="html">&lt;p&gt;标准模板库&lt;/p&gt;
+</content>
+  </entry>
+</feed>
