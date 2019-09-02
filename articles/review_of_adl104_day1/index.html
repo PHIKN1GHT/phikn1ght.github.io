@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>CCF ADL104《新一代视觉计算》课程内容回顾 &#8212; 旅人札记</title>
+    <title>CCF ADL104《新一代视觉计算》课程内容回顾（Day1） &#8212; 旅人札记</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -51,73 +51,56 @@
 
           <div class="body" role="main">
             
-  <p>八月末，久违</p>
-<div class="section" id="ccf-adl104">
-<h1><a class="toc-backref" href="#id18">CCF ADL104《新一代视觉计算》课程内容回顾</a><a class="headerlink" href="#ccf-adl104" title="永久链接至标题">¶</a></h1>
+  <p>《跨媒体智能：表征、分析与应用》、《从粗放式到集约式：针对复杂数据的鲁棒深度学习方法》</p>
+<div class="section" id="ccf-adl104-day1">
+<h1><a class="toc-backref" href="#id20">CCF ADL104《新一代视觉计算》课程内容回顾（Day1）</a><a class="headerlink" href="#ccf-adl104-day1" title="永久链接至标题">¶</a></h1>
 <div class="contents topic" id="id1">
 <p class="topic-title first">文章目录</p>
 <ul class="simple">
-<li><a class="reference internal" href="#ccf-adl104" id="id18">CCF ADL104《新一代视觉计算》课程内容回顾</a><ul>
-<li><a class="reference internal" href="#id2" id="id19">引言</a></li>
-<li><a class="reference internal" href="#day-1-a-m" id="id20">Day 1 A.M. 跨媒体智能：表征、分析与应用</a><ul>
-<li><a class="reference internal" href="#id4" id="id21">研究背景</a><ul>
-<li><a class="reference internal" href="#id5" id="id22">存在的问题</a></li>
-<li><a class="reference internal" href="#id6" id="id23">研究难点</a></li>
+<li><a class="reference internal" href="#ccf-adl104-day1" id="id20">CCF ADL104《新一代视觉计算》课程内容回顾（Day1）</a><ul>
+<li><a class="reference internal" href="#id2" id="id21">引言</a></li>
+<li><a class="reference internal" href="#id3" id="id22">《跨媒体智能：表征、分析与应用》</a><ul>
+<li><a class="reference internal" href="#id5" id="id23">研究背景</a></li>
+<li><a class="reference internal" href="#id8" id="id24">主要任务</a></li>
+<li><a class="reference internal" href="#id9" id="id25">研究思想</a></li>
+<li><a class="reference internal" href="#id10" id="id26">研究成果</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id7" id="id24">主要任务</a></li>
-<li><a class="reference internal" href="#id8" id="id25">研究思想</a></li>
-<li><a class="reference internal" href="#id9" id="id26">研究成果</a><ul>
-<li><a class="reference internal" href="#id10" id="id27">1. 细粒度图像分类</a></li>
-<li><a class="reference internal" href="#pku-fg-xmedia" id="id28">2. 构建细粒度跨媒体检索数据集和评测基准PKU FG-XMedia</a></li>
-<li><a class="reference internal" href="#id11" id="id29">3. 跨媒体检索——跨媒体共享语义空间映射</a></li>
-<li><a class="reference internal" href="#id12" id="id30">4. 跨媒体检索——跨媒体非对称关系映射</a></li>
-<li><a class="reference internal" href="#id13" id="id31">5. 跨媒体检索——跨媒体模型训练问题</a></li>
-<li><a class="reference internal" href="#id14" id="id32">6. 跨媒体检索——跨媒体快速检索</a></li>
-<li><a class="reference internal" href="#pku-xmedia" id="id33">7. 跨媒体检索数据集PKU XMedia</a></li>
-<li><a class="reference internal" href="#id15" id="id34">8. 视频描述生成</a></li>
-<li><a class="reference internal" href="#id16" id="id35">9. 文本到图像生成</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#day-1-p-m" id="id36">Day 1 P.M.</a></li>
-<li><a class="reference internal" href="#day-2-a-m" id="id37">Day 2 A.M.</a></li>
-<li><a class="reference internal" href="#day-2-p-m" id="id38">Day 2 P.M.</a></li>
-<li><a class="reference internal" href="#day-3-a-m" id="id39">Day 3 A.M.</a></li>
-<li><a class="reference internal" href="#day-3-p-m" id="id40">Day 3 P.M.</a></li>
-<li><a class="reference internal" href="#id17" id="id41">总结</a></li>
+<li><a class="reference internal" href="#id18" id="id27">《从粗放式到集约式：针对复杂数据的鲁棒深度学习方法》</a></li>
+<li><a class="reference internal" href="#id19" id="id28">总结</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id19">引言</a><a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>八月末，久违</p>
+<h2><a class="toc-backref" href="#id21">引言</a><a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>八月末，久违地和 <a class="reference external" href="https://github.com/HicoderDR">&#64;HicoderDR</a></p>
 </div>
-<div class="section" id="day-1-a-m">
-<h2><a class="toc-backref" href="#id20">Day 1 A.M. 跨媒体智能：表征、分析与应用</a><a class="headerlink" href="#day-1-a-m" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id22">《跨媒体智能：表征、分析与应用》</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>主讲人：彭宇新（<a class="reference external" href="http://www.icst.pku.edu.cn/mipl/">北京大学 计算机科学技术研究所 多媒体信息处理研究室</a> <a class="reference external" href="https://github.com/PKU-ICST-MIPL">Github主页</a>）</p>
-<div class="section" id="id4">
-<h3><a class="toc-backref" href="#id21">研究背景</a><a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id23">研究背景</a><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>据卫报统计，视频、图像等多媒体数据已经占据了大数据超过90%的比重，跨媒体指由图像、视频、文本、音频等形式上多源异构，语义上相互关联的互相融合的媒体形态</p>
 <p>传统人工智能：文本推理</p>
 <p>实际上：多源信息的共同参与</p>
-<div class="section" id="id5">
-<h4><a class="toc-backref" href="#id22">存在的问题</a><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id6">
+<h4>存在的问题<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h4>
 <ul class="simple">
 <li>语义鸿沟：视频图像的计算机特征表示与人类理解的语义概念不一致</li>
 <li>异构鸿沟：视频图像包含的视觉、语言等不同模态信息的特征表示不一致</li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h4><a class="toc-backref" href="#id23">研究难点</a><a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h4>
-<p>如何综合利用多模态信息缩短语义鸿沟？</p>
-<p>如何实现多模态信息的统一表征和综合利用？</p>
-</div>
-</div>
 <div class="section" id="id7">
-<h3><a class="toc-backref" href="#id24">主要任务</a><a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<h4>研究难点<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li>如何综合利用多模态信息缩短语义鸿沟？</li>
+<li>如何实现多模态信息的统一表征和综合利用？</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id24">主要任务</a><a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li>跨媒体统一表征理论和模型</li>
 </ul>
@@ -145,179 +128,179 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id8">
-<h3><a class="toc-backref" href="#id25">研究思想</a><a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id25">研究思想</a><a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <p>知识驱动的跨媒体协同推理</p>
 </div>
-<div class="section" id="id9">
-<h3><a class="toc-backref" href="#id26">研究成果</a><a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <div class="section" id="id10">
-<h4><a class="toc-backref" href="#id27">1. 细粒度图像分类</a><a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
-<ol class="arabic simple">
+<h3><a class="toc-backref" href="#id26">研究成果</a><a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id11">
+<h4>1. 细粒度图像分类<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
 <li>The Application of Two-level Attention Models in Deep Convolutional Neural Network for Fine-grained Image Classification</li>
 <li>Object-Part Attention Model for Fine-grained Image Classification</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">为了减少标注依赖，提出空间拓扑注意力学习方法，仅使用图像级标注信息，通过卷积激励的显著分布估计与拓扑关联约束的语义对齐，自动定位对象、部件显著区域，实现图像细粒度辨识与分类</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Only Learn One Sample: Fine-Grained Visual Categorization with One Sample Training</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对一个训练样本条件下的图像细分类，提出了基于选择与生成的数据增广方法，通过多示例学习与对抗生成，对数据进行分割、过滤、再选择和生成，实现图像数据的多样性扩增</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Which and How Many Regions to Gaze: Focus Discriminative Regions for Fine-grained Visual Categorization</li>
 <li>StackDRL: Stacked Deep Reinforcement Learning for Fine-grained Visual Categorization</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">为了提升图像细分类准确率，提出多尺度堆叠式深度强化学习方法，序列式地定位不同尺度的对象及其显著区域，并自动选择显著区域的数目，避免现有方法依赖人工先验和实验调参造成的扩展性上的局限</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Fine-grained Discriminative Localization via Saliency-guided Faster R-CNN</li>
 <li>Fast Fine-grained Image Classification via Weakly Supervised Discriminative Localization</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对图像细分类的速度问题，提出了多级注意力引导的快速辨识定位方法，通过多级注意力提取网络与辨识性定位网络，实现了细粒度分类与辨识性区域定位的协同促进，在提升分类准确率的同时，实现分类加速</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Error-Driven Incremental Learning in Deep Convolutional Neural Network for Large-Scale Image Classification</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对新增类别训练加速问题，提出层次化深度增量迁移学习方法，通过类别划分的层次化模型与特征迁移的增量训练，对模型进行动态扩容与知识迁移，解决了新增类别训练加速的难题</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Fine-grained Image Classification via Combining Vision and Language</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">提出多源语义嵌入的视觉表示方法, 通过显著协同优化的视觉分支和卷积序列编码的文本分支，挖掘图像文本的语义关联和嵌入表示学习，突破单源信息表示的局限性</p>
 </div>
 </div>
 <div class="section" id="pku-fg-xmedia">
-<h4><a class="toc-backref" href="#id28">2. 构建细粒度跨媒体检索数据集和评测基准PKU FG-XMedia</a><a class="headerlink" href="#pku-fg-xmedia" title="永久链接至标题">¶</a></h4>
-<ol class="arabic simple">
+<h4>2. 构建细粒度跨媒体检索数据集和评测基准PKU FG-XMedia<a class="headerlink" href="#pku-fg-xmedia" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
 <li>A New Benchmark and Approach for Fine-grained Cross-media Retrieval</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">首个包含多达4种媒体类型（图像、文本、视频、音频）的细粒度跨媒体检索公开数据集和评测基准，涵盖200个细粒度类别（鸟大类下的200个子类，如灰翅鸥、灰背鸥、加州海鸥、黑背鸥等）。</p>
 </div>
 </div>
-<div class="section" id="id11">
-<h4><a class="toc-backref" href="#id29">3. 跨媒体检索——跨媒体共享语义空间映射</a><a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
-<ol class="arabic simple">
+<div class="section" id="id12">
+<h4>3. 跨媒体检索——跨媒体共享语义空间映射<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
 <li>Semi-Supervised Cross-Media Feature Learning with Unified Patch Graph Regularization</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对多种媒体的统一表征问题，提出图规约共享语义空间映射方法，建立跨媒体统一关联超图模型，将多种媒体的全局、局部信息以及它们之间的复杂关联关系建模在一个超图中，同时学习多种媒体的统一表征</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>CM-GANs: Cross-modal Generative Adversarial Networks for Common Representation Learning</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对深度跨媒体统一表征学习，提出了跨媒体生成式对抗网络，构建跨媒体卷积自编码器，通过媒体内和媒体间的对抗训练拟合不同媒体数据的联合分布，提升了跨媒体关联学习的效果</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Cross-media Shared Representation by Hierarchical Learning with Multiple Deep Networks</li>
 <li>CCL: Cross-modal Correlation Learning with Multi-grained Fusion by Hierarchical Network</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对深度跨媒体细粒度建模问题，提出层叠式耦合关联学习方法，有效融合粗、细粒度的语义表示，动态平衡媒体内与媒体间的关联关系，提高检索准确率</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Cross-media Multi-level Alignment with Relation Attention Network</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对细粒度局部关系建模，提出视觉-语言关系注意力模型，建立多级对齐网络，同时建模图像和文本之间全局、局部以及局部关系三个级别的语义对齐，有效促进跨媒体关联检索效果</p>
 </div>
 </div>
-<div class="section" id="id12">
-<h4><a class="toc-backref" href="#id30">4. 跨媒体检索——跨媒体非对称关系映射</a><a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
-<ol class="arabic simple">
+<div class="section" id="id13">
+<h4>4. 跨媒体检索——跨媒体非对称关系映射<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
 <li>Modality-specific Cross-modal Similarity Measurement with Recurrent Attention Network</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对视觉-语言之间信息不对等问题，提出了特定媒体语义空间映射方法，充分学习不同媒体之间不平衡的关联信息，有效挖掘不同媒体语义空间的互补性，提高了跨媒体关联检索效果</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Cross-modal Bidirectional Translation via Reinforcement Learning</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对视觉-语言信息的相互转换问题，提出了跨媒体双向翻译模型，借鉴机器翻译的思想并建立跨媒体强化学习策略，通过媒体间和媒体内两种奖励的相互促进，提升跨媒体关联学习效果</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Show and Tell in the Loop: Cross-Modal Circular Correlation Learning</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对视觉-语言信息相互生成问题，提出了跨媒体循环关联学习方法，同时进行图像-文本相互生成及统一表征，通过循环训练及数据增广使不同任务相互促进，提升跨媒体关联学习效果</p>
 </div>
 </div>
-<div class="section" id="id13">
-<h4><a class="toc-backref" href="#id31">5. 跨媒体检索——跨媒体模型训练问题</a><a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
-<ol class="arabic simple">
+<div class="section" id="id14">
+<h4>5. 跨媒体检索——跨媒体模型训练问题<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
 <li>MHTN: Modal-adversarial Hybrid Transfer Network for Cross-modal Retrieval</li>
 <li>Deep Cross-media Knowledge Transfer</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对跨媒体数据标注成本大的问题，提出混合知识迁移方法，通过模态共享的混合迁移网络与模态对抗的表征学习策略，仅使用包含单一媒体的源域数据，支持跨媒体目标域的模型训练</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Life-long Cross-media Correlation Learning</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对新增跨媒体数据的模型训练问题，提出了跨媒体终身学习方法，建立高层知识共享及自适应网络扩容机制，通过域内分布对齐和域间知识蒸馏，利用知识迁移促进新增数据关联学习</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Zero-shot Cross-media Embedding Learning with Dual Adversarial Distribution Network</li>
 <li>Dual Adversarial Networks for Zero-shot Cross-media Retrieval</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对新增未知数据的检索问题，提出零样本跨媒体对偶对抗学习方法，通过生成对抗网络构成对偶结构以挖掘数据潜在结构信息，利用类别词嵌入进行知识迁移，实现零样本跨媒体检索</p>
 </div>
 </div>
-<div class="section" id="id14">
-<h4><a class="toc-backref" href="#id32">6. 跨媒体检索——跨媒体快速检索</a><a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h4>
-<ol class="arabic simple">
+<div class="section" id="id15">
+<h4>6. 跨媒体检索——跨媒体快速检索<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
 <li>Multi-Scale Correlation for Sequential Cross-modal Hashing Learning</li>
 <li>Sequential Cross-Modal Hashing Learning via Multi-scale Correlation Mining</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对有监督条件下哈希码鲁棒性问题，提出序列化多尺度特征哈希方法，通过多尺度特征指导学习和尺度间关联挖掘，提高了哈希码的多样性和鲁棒性，实现更好的检索结果</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>SCH-GAN: Semi-supervised Cross-modal Hashing by Generative Adversarial Network</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对半监督条件下的哈希码生成问题，提出半监督跨媒体生成对抗哈希方法：通过生成对抗网络用无标注数据构造边界样本以增强训练；通过离散策略梯度优化生成器实现高效哈希检索</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Unsupervised Generative Adversarial Cross-modal Hashing</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对无监督条件下的哈希码生成问题，提出无监督跨媒体生成对抗哈希方法：通过关联图模型建模数据流形结构，利用流形结构上的潜在关联，实现无监督的高效哈希检索</p>
 </div>
 </div>
 <div class="section" id="pku-xmedia">
-<h4><a class="toc-backref" href="#id33">7. 跨媒体检索数据集PKU XMedia</a><a class="headerlink" href="#pku-xmedia" title="永久链接至标题">¶</a></h4>
+<h4>7. 跨媒体检索数据集PKU XMedia<a class="headerlink" href="#pku-xmedia" title="永久链接至标题">¶</a></h4>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">媒体多样：5种媒体类型（图像、文本、视频、音频、3D）
@@ -327,28 +310,28 @@
 同时具备数据量、媒体多样性上的优势，能够全面评测跨媒体相关方法在实际大规模、多样化数据条件下的性能</p>
 </div>
 </div>
-<div class="section" id="id15">
-<h4><a class="toc-backref" href="#id34">8. 视频描述生成</a><a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h4>
-<ol class="arabic simple">
+<div class="section" id="id16">
+<h4>8. 视频描述生成<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
 <li>Object-aware Aggregation with Bidirectional Temporal Graph for Video Captioning</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对视频细粒度时空信息建模问题，提出对象感知双向图方法，从正时序和逆时序方向建立互补的双向时序图，通过建模多个对象动态时序轨迹，生成描述对象时序演化的自然语言文本</p>
 </div>
-<ol class="arabic simple">
+<ul class="simple">
 <li>Hierarchical Vision-Language Alignment for Video Captioning</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">针对视频和文本语句语义一致性建模问题，提出层次化视觉-语言对齐方法，通过二元记忆循环网络利用视觉内容与本文语句之间不同粒度的隐含对齐关系，指导生成准确的视频文本描述</p>
 </div>
 </div>
-<div class="section" id="id16">
-<h4><a class="toc-backref" href="#id35">9. 文本到图像生成</a><a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h4>
-<ol class="arabic simple">
+<div class="section" id="id17">
+<h4>9. 文本到图像生成<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
 <li>Text-to-image Synthesis via Symmetrical Distillation Networks</li>
-</ol>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">提出对称蒸馏网络方法，通过蒸馏学习机制，将知识从通用判别网络迁移到具有对称结构的图像生成网络中，建立文本空间到图像空间的映射，生成与文本内容相符的图像</p>
@@ -356,23 +339,11 @@
 </div>
 </div>
 </div>
-<div class="section" id="day-1-p-m">
-<h2><a class="toc-backref" href="#id36">Day 1 P.M.</a><a class="headerlink" href="#day-1-p-m" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id18">
+<h2><a class="toc-backref" href="#id27">《从粗放式到集约式：针对复杂数据的鲁棒深度学习方法》</a><a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h2>
 </div>
-<div class="section" id="day-2-a-m">
-<h2><a class="toc-backref" href="#id37">Day 2 A.M.</a><a class="headerlink" href="#day-2-a-m" title="永久链接至标题">¶</a></h2>
-</div>
-<div class="section" id="day-2-p-m">
-<h2><a class="toc-backref" href="#id38">Day 2 P.M.</a><a class="headerlink" href="#day-2-p-m" title="永久链接至标题">¶</a></h2>
-</div>
-<div class="section" id="day-3-a-m">
-<h2><a class="toc-backref" href="#id39">Day 3 A.M.</a><a class="headerlink" href="#day-3-a-m" title="永久链接至标题">¶</a></h2>
-</div>
-<div class="section" id="day-3-p-m">
-<h2><a class="toc-backref" href="#id40">Day 3 P.M.</a><a class="headerlink" href="#day-3-p-m" title="永久链接至标题">¶</a></h2>
-</div>
-<div class="section" id="id17">
-<h2><a class="toc-backref" href="#id41">总结</a><a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id19">
+<h2><a class="toc-backref" href="#id28">总结</a><a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h2>
 </div>
 </div>
 
@@ -524,7 +495,7 @@
   <ul>
   
     
-    <li><a href="../../blog/2019/">2019 (5)</a></li>
+    <li><a href="../../blog/2019/">2019 (6)</a></li>
     
   
   </ul>
@@ -553,7 +524,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/articles/review_of_adl104.rst.txt"
+      <a href="../../_sources/articles/review_of_adl104_day1.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

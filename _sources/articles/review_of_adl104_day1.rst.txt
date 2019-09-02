@@ -2,22 +2,21 @@
     :tags: ICPC
     :author: φKN1GHT
 
-    八月末，久违
+    《跨媒体智能：表征、分析与应用》、《从粗放式到集约式：针对复杂数据的鲁棒深度学习方法》
 
-CCF ADL104《新一代视觉计算》课程内容回顾
-========================================
+CCF ADL104《新一代视觉计算》课程内容回顾（Day1）
+================================================
 
 .. contents:: 文章目录
-    :depth: 4
+    :depth: 3
 
 引言
------------
-八月末，久违
+----
 
+八月末，久违地和 `@HicoderDR <https://github.com/HicoderDR>`_ 
 
-
-Day 1 A.M. 跨媒体智能：表征、分析与应用
----------------------------------------
+《跨媒体智能：表征、分析与应用》
+--------------------------------
 
 主讲人：彭宇新（\ `北京大学 计算机科学技术研究所 多媒体信息处理研究室 <http://www.icst.pku.edu.cn/mipl/>`_ \ `Github主页 <https://github.com/PKU-ICST-MIPL>`_）
 
@@ -33,19 +32,19 @@ Day 1 A.M. 跨媒体智能：表征、分析与应用
 存在的问题
 **********
 
-- 语义鸿沟：视频图像的计算机特征表示与人类理解的语义概念不一致
+* 语义鸿沟：视频图像的计算机特征表示与人类理解的语义概念不一致
 
-- 异构鸿沟：视频图像包含的视觉、语言等不同模态信息的特征表示不一致
+* 异构鸿沟：视频图像包含的视觉、语言等不同模态信息的特征表示不一致
 
 研究难点
 ********
 
-如何综合利用多模态信息缩短语义鸿沟？
+* 如何综合利用多模态信息缩短语义鸿沟？
 
-如何实现多模态信息的统一表征和综合利用？
+* 如何实现多模态信息的统一表征和综合利用？
 
 主要任务
-+++++++++
+++++++++
 
 * 跨媒体统一表征理论和模型
 
@@ -72,44 +71,44 @@ Day 1 A.M. 跨媒体智能：表征、分析与应用
 1. 细粒度图像分类
 *****************
 
-#. The Application of Two-level Attention Models in Deep Convolutional Neural Network for Fine-grained Image Classification
+* The Application of Two-level Attention Models in Deep Convolutional Neural Network for Fine-grained Image Classification
 
-#. Object-Part Attention Model for Fine-grained Image Classification
+* Object-Part Attention Model for Fine-grained Image Classification
 
 .. note::
 
 	为了减少标注依赖，提出空间拓扑注意力学习方法，仅使用图像级标注信息，通过卷积激励的显著分布估计与拓扑关联约束的语义对齐，自动定位对象、部件显著区域，实现图像细粒度辨识与分类
 
-#. Only Learn One Sample: Fine-Grained Visual Categorization with One Sample Training
+* Only Learn One Sample: Fine-Grained Visual Categorization with One Sample Training
 
 .. note::
 
 	针对一个训练样本条件下的图像细分类，提出了基于选择与生成的数据增广方法，通过多示例学习与对抗生成，对数据进行分割、过滤、再选择和生成，实现图像数据的多样性扩增
 
-#. Which and How Many Regions to Gaze: Focus Discriminative Regions for Fine-grained Visual Categorization
+* Which and How Many Regions to Gaze: Focus Discriminative Regions for Fine-grained Visual Categorization
 
-#. StackDRL: Stacked Deep Reinforcement Learning for Fine-grained Visual Categorization
+* StackDRL: Stacked Deep Reinforcement Learning for Fine-grained Visual Categorization
 
 .. note::
 
 	为了提升图像细分类准确率，提出多尺度堆叠式深度强化学习方法，序列式地定位不同尺度的对象及其显著区域，并自动选择显著区域的数目，避免现有方法依赖人工先验和实验调参造成的扩展性上的局限
 
-#. Fine-grained Discriminative Localization via Saliency-guided Faster R-CNN
+* Fine-grained Discriminative Localization via Saliency-guided Faster R-CNN
 
-#. Fast Fine-grained Image Classification via Weakly Supervised Discriminative Localization
+* Fast Fine-grained Image Classification via Weakly Supervised Discriminative Localization
 
 .. note::
 
 	针对图像细分类的速度问题，提出了多级注意力引导的快速辨识定位方法，通过多级注意力提取网络与辨识性定位网络，实现了细粒度分类与辨识性区域定位的协同促进，在提升分类准确率的同时，实现分类加速
 
 
-#. Error-Driven Incremental Learning in Deep Convolutional Neural Network for Large-Scale Image Classification
+* Error-Driven Incremental Learning in Deep Convolutional Neural Network for Large-Scale Image Classification
 
 .. note::
 
 	针对新增类别训练加速问题，提出层次化深度增量迁移学习方法，通过类别划分的层次化模型与特征迁移的增量训练，对模型进行动态扩容与知识迁移，解决了新增类别训练加速的难题
 
-#. Fine-grained Image Classification via Combining Vision and Language
+* Fine-grained Image Classification via Combining Vision and Language
 
 .. note::
 
@@ -118,7 +117,7 @@ Day 1 A.M. 跨媒体智能：表征、分析与应用
 2. 构建细粒度跨媒体检索数据集和评测基准PKU FG-XMedia
 ****************************************************
 
-#. A New Benchmark and Approach for Fine-grained Cross-media Retrieval
+* A New Benchmark and Approach for Fine-grained Cross-media Retrieval
 
 .. note::
 
@@ -127,28 +126,28 @@ Day 1 A.M. 跨媒体智能：表征、分析与应用
 3. 跨媒体检索——跨媒体共享语义空间映射
 *************************************
 
-#. Semi-Supervised Cross-Media Feature Learning with Unified Patch Graph Regularization
+* Semi-Supervised Cross-Media Feature Learning with Unified Patch Graph Regularization
 
 .. note::
 
 	针对多种媒体的统一表征问题，提出图规约共享语义空间映射方法，建立跨媒体统一关联超图模型，将多种媒体的全局、局部信息以及它们之间的复杂关联关系建模在一个超图中，同时学习多种媒体的统一表征
 
-#. CM-GANs: Cross-modal Generative Adversarial Networks for Common Representation Learning
+* CM-GANs: Cross-modal Generative Adversarial Networks for Common Representation Learning
 
 .. note::
 
 	针对深度跨媒体统一表征学习，提出了跨媒体生成式对抗网络，构建跨媒体卷积自编码器，通过媒体内和媒体间的对抗训练拟合不同媒体数据的联合分布，提升了跨媒体关联学习的效果
 
-#. Cross-media Shared Representation by Hierarchical Learning with Multiple Deep Networks
+* Cross-media Shared Representation by Hierarchical Learning with Multiple Deep Networks
 
-#. CCL: Cross-modal Correlation Learning with Multi-grained Fusion by Hierarchical Network
+* CCL: Cross-modal Correlation Learning with Multi-grained Fusion by Hierarchical Network
 
 .. note::
 
 	针对深度跨媒体细粒度建模问题，提出层叠式耦合关联学习方法，有效融合粗、细粒度的语义表示，动态平衡媒体内与媒体间的关联关系，提高检索准确率
 
 
-#. Cross-media Multi-level Alignment with Relation Attention Network
+* Cross-media Multi-level Alignment with Relation Attention Network
 
 .. note::
 
@@ -158,20 +157,20 @@ Day 1 A.M. 跨媒体智能：表征、分析与应用
 4. 跨媒体检索——跨媒体非对称关系映射
 ***********************************
 
-#. Modality-specific Cross-modal Similarity Measurement with Recurrent Attention Network
+* Modality-specific Cross-modal Similarity Measurement with Recurrent Attention Network
 
 .. note::
 
 	针对视觉-语言之间信息不对等问题，提出了特定媒体语义空间映射方法，充分学习不同媒体之间不平衡的关联信息，有效挖掘不同媒体语义空间的互补性，提高了跨媒体关联检索效果
 
 
-#. Cross-modal Bidirectional Translation via Reinforcement Learning
+* Cross-modal Bidirectional Translation via Reinforcement Learning
 
 .. note::
 
 	针对视觉-语言信息的相互转换问题，提出了跨媒体双向翻译模型，借鉴机器翻译的思想并建立跨媒体强化学习策略，通过媒体间和媒体内两种奖励的相互促进，提升跨媒体关联学习效果
 
-#. Show and Tell in the Loop: Cross-Modal Circular Correlation Learning
+* Show and Tell in the Loop: Cross-Modal Circular Correlation Learning
 
 .. note::
 
@@ -180,23 +179,23 @@ Day 1 A.M. 跨媒体智能：表征、分析与应用
 5. 跨媒体检索——跨媒体模型训练问题
 *********************************
 
-#. MHTN: Modal-adversarial Hybrid Transfer Network for Cross-modal Retrieval
+* MHTN: Modal-adversarial Hybrid Transfer Network for Cross-modal Retrieval
 
-#. Deep Cross-media Knowledge Transfer
+* Deep Cross-media Knowledge Transfer
 
 .. note::
 
 	针对跨媒体数据标注成本大的问题，提出混合知识迁移方法，通过模态共享的混合迁移网络与模态对抗的表征学习策略，仅使用包含单一媒体的源域数据，支持跨媒体目标域的模型训练
 
-#. Life-long Cross-media Correlation Learning
+* Life-long Cross-media Correlation Learning
 
 .. note::
 
 	针对新增跨媒体数据的模型训练问题，提出了跨媒体终身学习方法，建立高层知识共享及自适应网络扩容机制，通过域内分布对齐和域间知识蒸馏，利用知识迁移促进新增数据关联学习
 
-#. Zero-shot Cross-media Embedding Learning with Dual Adversarial Distribution Network
+* Zero-shot Cross-media Embedding Learning with Dual Adversarial Distribution Network
 
-#. Dual Adversarial Networks for Zero-shot Cross-media Retrieval
+* Dual Adversarial Networks for Zero-shot Cross-media Retrieval
 
 .. note::
 
@@ -205,21 +204,21 @@ Day 1 A.M. 跨媒体智能：表征、分析与应用
 6. 跨媒体检索——跨媒体快速检索
 *****************************
 
-#. Multi-Scale Correlation for Sequential Cross-modal Hashing Learning
+* Multi-Scale Correlation for Sequential Cross-modal Hashing Learning
 
-#. Sequential Cross-Modal Hashing Learning via Multi-scale Correlation Mining
+* Sequential Cross-Modal Hashing Learning via Multi-scale Correlation Mining
 
 .. note::
 
 	针对有监督条件下哈希码鲁棒性问题，提出序列化多尺度特征哈希方法，通过多尺度特征指导学习和尺度间关联挖掘，提高了哈希码的多样性和鲁棒性，实现更好的检索结果
 
-#. SCH-GAN: Semi-supervised Cross-modal Hashing by Generative Adversarial Network
+* SCH-GAN: Semi-supervised Cross-modal Hashing by Generative Adversarial Network
 
 .. note::
 
 	针对半监督条件下的哈希码生成问题，提出半监督跨媒体生成对抗哈希方法：通过生成对抗网络用无标注数据构造边界样本以增强训练；通过离散策略梯度优化生成器实现高效哈希检索
 
-#. Unsupervised Generative Adversarial Cross-modal Hashing
+* Unsupervised Generative Adversarial Cross-modal Hashing
 
 .. note::
 
@@ -239,13 +238,13 @@ Day 1 A.M. 跨媒体智能：表征、分析与应用
 
 8. 视频描述生成
 ***************
-#. Object-aware Aggregation with Bidirectional Temporal Graph for Video Captioning
+* Object-aware Aggregation with Bidirectional Temporal Graph for Video Captioning
 
 .. note::
 
 	针对视频细粒度时空信息建模问题，提出对象感知双向图方法，从正时序和逆时序方向建立互补的双向时序图，通过建模多个对象动态时序轨迹，生成描述对象时序演化的自然语言文本
 
-#. Hierarchical Vision-Language Alignment for Video Captioning
+* Hierarchical Vision-Language Alignment for Video Captioning
 
 .. note::
 
@@ -254,33 +253,29 @@ Day 1 A.M. 跨媒体智能：表征、分析与应用
 9. 文本到图像生成
 *****************
 
-#. Text-to-image Synthesis via Symmetrical Distillation Networks
+* Text-to-image Synthesis via Symmetrical Distillation Networks
 
 .. note::
 
 	提出对称蒸馏网络方法，通过蒸馏学习机制，将知识从通用判别网络迁移到具有对称结构的图像生成网络中，建立文本空间到图像空间的映射，生成与文本内容相符的图像
 
-Day 1 P.M.
------------------
+《从粗放式到集约式：针对复杂数据的鲁棒深度学习方法》
+----------------------------------------------------
 
 
 
-Day 2 A.M.
------------------
-
-Day 2 P.M.
------------------
 
 
-Day 3 A.M.
------------------
 
-Day 3 P.M.
------------------
+
+
+
+
+
+
 
 总结
------------
-
+----
 
 
 
