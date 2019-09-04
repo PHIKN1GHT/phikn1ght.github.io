@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>杂文选集 &#8212; 旅人札记</title>
+    <title>研究日志 &#8212; 旅人札记</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -19,8 +19,6 @@
     <link rel="author" title="关于这些文档" href="../../about/" />
     <link rel="index" title="索引" href="../../genindex/" />
     <link rel="search" title="搜索" href="../../search/" />
-    <link rel="next" title="收藏馆" href="../private_library/" />
-    <link rel="prev" title="学术评论索引" href="../academic_review/" />
   
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -54,11 +52,43 @@
           <div class="body" role="main">
             
   <div class="section" id="id1">
-<h1>杂文选集<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>暂无内容</p>
+<h1>研究日志<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>2019-09-04<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>拜读了邱锡鹏编写的《神经网络与深度学习》的前两章和全部附录，重温一下数学基础与机器学习的常用符号表达。</p>
+<p>完成了习题的warmup部分，然后在第一章实现线性回归的习题里被tensorflow的实现卡了。</p>
+<p>另外，整个习题部分错漏百出，目测是临时工编写的？也有可能刚刚才出来还没全部check完成</p>
+<p>尝试克隆并构建 <a class="reference external" href="https://github.com/peteanderson80/bottom-up-attention">https://github.com/peteanderson80/bottom-up-attention</a> 失败</p>
+<p>trainval_resnet101_faster_rcnn_genome_36.tsv 整个文件有足足45GB 实在是太大了</p>
+<p>python读到一半内存占用率超过95.7%然后直接宕机</p>
+<p>希望能寻找到能够处理它的方法</p>
+<p>或是换个思路……自行提取出特征然后分块做成mmap？</p>
+<p>阅读《Learning Visual Knowledge Memory Networks for Visual Question Answering》( <a class="reference external" href="http://openaccess.thecvf.com/content_cvpr_2018/html/Su_Learning_Visual_Knowledge_CVPR_2018_paper.html">http://openaccess.thecvf.com/content_cvpr_2018/html/Su_Learning_Visual_Knowledge_CVPR_2018_paper.html</a> )</p>
+<p>依然没有找到较好的融合图像知识（visual knowledge/image knowledge）的方法</p>
+<p>希望明天能获得一些收获</p>
+</div>
 </div>
 
   <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../review_of_adl104_day2/">
+    <i class="fa fa-arrow-circle-left"></i>
+    CCF ADL104《新一代视觉计算》课程内容回顾（Day2）
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+</div>
+
   
   
   </div>
@@ -79,16 +109,54 @@
 
 
 
+  
+  
+  <h2>
+  
+  <i class="fa fa-calendar"></i>
+    2019年9月04日 
+  
+  </h2>
+
+  <ul>
+    
+
+  
+  <li id="author"><span><i class="fa-fw fa fa-user"></i></span>
+    
+      
+      φKN1GHT
+      
+    </li>
+  
+
+  
+
+  
+
+  
+
+  
+  <li id="tags"><span><i class="fa-fw fa fa-tag"></i></span>
+    
+      
+      <a href="../../blog/tag/icpc/">ICPC</a>
+      
+    </li>
+  
+  
+  </ul>
+
 
 <h3>导航</h3>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../about/">关于</a></li>
 <li class="toctree-l1"><a class="reference external" href="/blog/#://">所有文章</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../academic_reading/">文献导读索引</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../knowledge_base/">知识体系索引</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../academic_review/">学术评论索引</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">杂文选集</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../private_library/">收藏馆</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indexes/academic_reading/">文献导读索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indexes/knowledge_base/">知识体系索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indexes/academic_review/">学术评论索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indexes/selected_article/">杂文选集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indexes/private_library/">收藏馆</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../timestamp/">时间锚</a></li>
 </ul>
 
@@ -171,7 +239,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/indexes/selected_article.rst.txt"
+      <a href="../../_sources/articles/research_log.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

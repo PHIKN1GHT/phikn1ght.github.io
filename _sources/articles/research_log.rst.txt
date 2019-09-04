@@ -1,0 +1,36 @@
+.. post:: 2019-09-04
+    :tags: ICPC
+    :author: φKN1GHT
+    :exclude:
+
+    这是一篇会定期更新的研究日志，用于记录自己的失败过程和痛苦的经历。一方面用以自诫，另一方面也希望能帮助未来的研究者们少走一些弯路。
+
+研究日志
+========
+
+2019-09-04
+----------
+
+拜读了邱锡鹏编写的《神经网络与深度学习》的前两章和全部附录，重温一下数学基础与机器学习的常用符号表达。
+
+完成了习题的warmup部分，然后在第一章实现线性回归的习题里被tensorflow的实现卡了。
+
+另外，整个习题部分错漏百出，目测是临时工编写的？也有可能刚刚才出来还没全部check完成
+
+尝试克隆并构建 https://github.com/peteanderson80/bottom-up-attention 失败
+
+trainval_resnet101_faster_rcnn_genome_36.tsv 整个文件有足足45GB 实在是太大了
+
+python读到一半内存占用率超过95.7%然后直接宕机
+
+希望能寻找到能够处理它的方法
+
+或是换个思路……自行提取出特征然后分块做成mmap？
+
+阅读《Learning Visual Knowledge Memory Networks for Visual Question Answering》( http://openaccess.thecvf.com/content_cvpr_2018/html/Su_Learning_Visual_Knowledge_CVPR_2018_paper.html )
+
+依然没有找到较好的融合图像知识（visual knowledge/image knowledge）的方法
+
+希望明天能获得一些收获
+
+
