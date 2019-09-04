@@ -7,4 +7,4 @@
 .. toctree::
 	:maxdepth: 1
 	
-	../academic_reading/explicit_knowledge_based_reasoning_for_visual_question_answering
+	../articles/explicit_knowledge_based_reasoning_for_visual_question_answering

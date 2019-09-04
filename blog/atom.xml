@@ -7,7 +7,7 @@
   <link href="True/blog/atom.xml" rel="self" />
   <generator uri="http://ablog.readthedocs.org" version="0.9.4">ABlog</generator>
   <entry xml:base="True/blog/atom.xml">
-    <title type="text">研究日志</title>
+    <title type="text">研究日志（九月）</title>
     <id>True/articles/research_log/</id>
     <updated>2019-09-04T00:00:00Z</updated>
     <published>2019-09-04T00:00:00Z</published>
@@ -67,11 +67,11 @@
 </content>
   </entry>
   <entry xml:base="True/blog/atom.xml">
-    <title type="text">针对视觉问答的基于知识库的显式推理</title>
-    <id>True/academic_reading/explicit_knowledge_based_reasoning_for_visual_question_answering/</id>
+    <title type="text">[导读]针对视觉问答的基于知识库的显式推理</title>
+    <id>True/articles/explicit_knowledge_based_reasoning_for_visual_question_answering/</id>
     <updated>2019-08-17T00:00:00Z</updated>
     <published>2019-08-17T00:00:00Z</published>
-    <link href="True/academic_reading/explicit_knowledge_based_reasoning_for_visual_question_answering/" />
+    <link href="True/articles/explicit_knowledge_based_reasoning_for_visual_question_answering/" />
     <author>
       <name>φKN1GHT</name>
     </author>
