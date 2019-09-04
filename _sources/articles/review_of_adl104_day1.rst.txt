@@ -71,7 +71,7 @@ CCF ADL104《新一代视觉计算》课程内容回顾（Day1）
 知识驱动的跨媒体协同推理
 
 研究成果
-+++++++++
+++++++++
 
 1. 细粒度图像分类
 *****************
@@ -266,16 +266,49 @@ CCF ADL104《新一代视觉计算》课程内容回顾（Day1）
 《从粗放式到集约式：针对复杂数据的鲁棒深度学习方法》
 ----------------------------------------------------
 
+总概
+++++
+
+主讲人：孟德宇（西安交通大学 数学与统计学院 信息科学系 `个人主页 <http://dymeng.gr.xjtu.edu.cn>`_ ）
+
+机器学习的基本任务：预测
+
+目标：获得预测函数 :math:`Y=F_W(X)`
+
+传统机器学习方法：模型驱动
+
+现代机器学习方法：数据驱动
+
+大数据带来的问题：本质决策函数规律极其复杂，无法刻画输入输出规律
+
+主讲内容：
+
+* 自步学习：针对标记噪声模型驱动
+
+* 元学习：针对各类数据偏差情形模型驱动+数据驱动
+
+* 噪声建模：拟合噪声分布模型驱动
+
+* 噪声推断：自适应推断噪声分布模型驱动+数据驱动
+
+Self-paced Learning
+-------------------
+
+A simple idea: pseudo-label the data and then feed them back into training
+
+Favoring high-confidence samples: Only feedback some high-confidence samples
+
+From less to more: With the iteration, more samples can be added
 
 
+Model
+*****
 
+.. math::
 
+	min\limits_wv
 
-
-
-
-
-
+min┬(w,v∈[0,1]^n )⁡∑_(i=1)^n▒v_i  L(f(x_i;w),y_i )+γg(w)-λ‖v‖_1
 
 
 总结
