@@ -60,7 +60,7 @@
 <h2>2019-09-05<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p><strong>凌晨</strong></p>
 <p>和黎博士在机房里一起研究了半天终于成功使用锐龙3700全核心满速编译出UE4</p>
-<s>AMD, YES！</s>结果发现原来背后的原因是，有个沙雕的编译优化插件，<s>不交钱买正版就会压你CPU使用率，遂怒删之</s><p>在黎博士的启发下我也突然想到了解决之前文件读不了的问题的思路</p>
+<s>AMD, YES！</s>结果发现原来背后的原因是，有个沙雕的编译优化插件<s>不交钱买正版就会压你CPU使用率</s>，遂怒删之<p>在黎博士的启发下我也突然想到了解决之前文件读不了的问题的思路</p>
 于是<s>转手就是一阵代码魔改</s>成功让data_loader动了起来，两个模型的数据集特征提取工作也全部成功完成<p>原理是把大对象的索引以文件名拆成一个个小文件然后保存在文件夹里</p>
 <s>然而试着用通配符mv的时候发现居然爆参数了！于是只能find+管道符一通操作</s><div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="n">data</span><span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*_vfeats*.pkl&quot;</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="n">i</span> <span class="n">mv</span> <span class="p">{}</span> <span class="o">../</span><span class="n">vfeats</span><span class="o">/</span>
 </pre></div>

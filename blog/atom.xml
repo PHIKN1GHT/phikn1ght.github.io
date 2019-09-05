@@ -63,7 +63,7 @@
     <author>
       <name>φKN1GHT</name>
     </author>
-    <content type="html">&lt;p&gt;在图结构上的机器学习一直是一个非常难啃的任务，主要由于极高的复杂性和图本身所具有的结构信息。这篇文章的目的是为了简述如何在图卷积网络上实现深度学习。图卷积网络(GCN)是一个强有力的神经网络，被设计为直接在图上，并最大化利用他们的结构信息。&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;strong&gt;本文并未完结且大量内容为对原文内容的脑内机翻，请谨慎阅读或是等待笔者补完&lt;/strong&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="True/blog/atom.xml">
