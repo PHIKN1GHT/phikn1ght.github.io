@@ -162,7 +162,7 @@
 <h2>正规化特征向量<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <p>我们可以对每个结点标准化其特征向量，通过改变将邻接矩阵A乘以他的读矩阵D的逆，因此我们的简单传播法则现在变成了：</p>
 <div class="math notranslate nohighlight">
-\[f(X,A)=D^{-1}AX\]</div>
+\[f(X,A)=D^{-1}AXp\]</div>
 <p>让我们看看现在会发生什么。首先我们先计算出度矩阵：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
@@ -246,18 +246,67 @@
 </pre></div>
 </div>
 <p>随后，代入数据</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">51</span><span class="p">]:</span> <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([</span>
-             <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-             <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-         <span class="p">])</span>
-         <span class="n">relu</span><span class="p">(</span><span class="n">D_hat</span><span class="o">**-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">A_hat</span> <span class="o">*</span> <span class="n">X</span> <span class="o">*</span> <span class="n">W</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">51</span><span class="p">]:</span> <span class="n">matrix</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
-        <span class="p">[</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
-        <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
-        <span class="p">[</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]])</span>
+<p><em>In [51]:</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="p">])</span>
+    <span class="n">relu</span><span class="p">(</span><span class="n">D_hat</span><span class="o">**-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">A_hat</span> <span class="o">*</span> <span class="n">X</span> <span class="o">*</span> <span class="n">W</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Out[51]:</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]])</span>
 </pre></div>
 </div>
 <p>你看，一个具有邻接矩阵、输入特征、权重和激活函数的隐含层就这样诞生啦！</p>
+</div>
+<div class="section" id="id11">
+<h2>回到现实<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<p>现在，我们可以在一个真实的图结构上使用图卷积网络。</p>
+<p>Zachary’s Karate Club是一个常用的社交网络数据集。其中，图结点表示karate俱乐部的成员，而边则表示他们之间存在互相关系。当Zachary在karate俱乐部学习的时候，俱乐部的管理员和指导员之间发生了冲突，使得整个俱乐部被分成了两个部分。下面这个图展示了这件事情。</p>
+</div>
+<div class="section" id="id12">
+<h2>构建网络<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<p>现在让我们构建出图卷及网络。实际上，目前我们并不需要对这个网络进行训练，仅仅是随机地初始化就能产生有用的特征表示。我们会用networkx库来实现。</p>
+<p>from networkx import karate_club_graph, to_numpy_matrix
+zkc = karate_club_graph()
+order = sorted(list(zkc.nodes()))
+A = to_numpy_matrix(zkc, nodelist=order)
+I = np.eye(zkc.number_of_nodes())
+A_hat = A + I
+D_hat = np.array(np.sum(A_hat, axis=0))[0]
+D_hat = np.matrix(np.diag(D_hat))</p>
+<p>接着，我们随机地初始化它的边权。</p>
+<dl class="docutils">
+<dt>W_1 = np.random.normal(</dt>
+<dd>loc=0, scale=1, size=(zkc.number_of_nodes(), 4))</dd>
+<dt>W_2 = np.random.normal(</dt>
+<dd>loc=0, size=(W_1.shape[1], 2))</dd>
+</dl>
+<p>把图卷积层堆叠起来。这里我们仅用单位阵作为特征表示。也就是说，我们把每个结点都表示成一个one-hot编码的向量。</p>
+<dl class="docutils">
+<dt>def gcn_layer(A_hat, D_hat, X, W):</dt>
+<dd>return relu(D_hat**-1 * A_hat * X * W)</dd>
+</dl>
+<p>H_1 = gcn_layer(A_hat, D_hat, I, W_1)
+H_2 = gcn_layer(A_hat, D_hat, H_1, W_2)
+output = H_2</p>
+<p>然后提取特征表示。</p>
+<dl class="docutils">
+<dt>feature_representations = {</dt>
+<dd>node: np.array(output)[node]
+for node in zkc.nodes()}</dd>
+</dl>
+<p>看，现在的特征表示能很好地分割Zachary’s karate club。我们甚至还没有开始训练。</p>
+<p>注意，这个随机初始化的样例很有可能在x和y轴都给出0，所以多初始化几次才能出现这样的结果。</p>
+</div>
+<div class="section" id="id13">
+<h2>结论<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<p>在这篇文章里，我们从非常高的角度介绍了图卷积网络，并解释了网络里每一层的每一个结点是怎么用整合其邻居的方式对特征进行表征。我们看到了如何去构建网络，以及这样的网络有多么强大。</p>
+<p>在下一部分，我会深入解释其中的技术细节并演示如何实现并训练一个图卷积神经网络，用最新提出的半监督学习的方式。</p>
 </div>
 </div>
 

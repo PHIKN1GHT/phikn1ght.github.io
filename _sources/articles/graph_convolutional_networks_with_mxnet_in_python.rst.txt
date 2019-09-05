@@ -141,7 +141,7 @@
 
 .. math ::
 
-	f(X,A)=D^{-1}AX
+	f(X,A)=D^{-1}AXp
 
 让我们看看现在会发生什么。首先我们先计算出度矩阵：
 
@@ -244,19 +244,114 @@
 
 随后，代入数据
 
+*In [51]:*
+
 ::
 
-    In [51]: W = np.matrix([
-                 [1, -1],
-                 [-1, 1]
-             ])
-             relu(D_hat**-1 * A_hat * X * W)
-    Out[51]: matrix([[1., 0.],
-            [4., 0.],
-            [2., 0.],
-            [5., 0.]])
+    W = np.matrix([
+            [1, -1],
+            [-1, 1]
+        ])
+        relu(D_hat**-1 * A_hat * X * W)
+
+*Out[51]:*
+
+::
+
+    matrix([[1., 0.],
+        [4., 0.],
+        [2., 0.],
+        [5., 0.]])
 
 你看，一个具有邻接矩阵、输入特征、权重和激活函数的隐含层就这样诞生啦！
+
+回到现实
+----------------
+
+现在，我们可以在一个真实的图结构上使用图卷积网络。
+
+
+Zachary’s Karate Club是一个常用的社交网络数据集。其中，图结点表示karate俱乐部的成员，而边则表示他们之间存在互相关系。当Zachary在karate俱乐部学习的时候，俱乐部的管理员和指导员之间发生了冲突，使得整个俱乐部被分成了两个部分。下面这个图展示了这件事情。
+
+
+
+
+
+构建网络
+----------------
+
+现在让我们构建出图卷及网络。实际上，目前我们并不需要对这个网络进行训练，仅仅是随机地初始化就能产生有用的特征表示。我们会用networkx库来实现。
+
+
+from networkx import karate_club_graph, to_numpy_matrix
+zkc = karate_club_graph()
+order = sorted(list(zkc.nodes()))
+A = to_numpy_matrix(zkc, nodelist=order)
+I = np.eye(zkc.number_of_nodes())
+A_hat = A + I
+D_hat = np.array(np.sum(A_hat, axis=0))[0]
+D_hat = np.matrix(np.diag(D_hat))
+
+接着，我们随机地初始化它的边权。
+
+W_1 = np.random.normal(
+    loc=0, scale=1, size=(zkc.number_of_nodes(), 4))
+W_2 = np.random.normal(
+    loc=0, size=(W_1.shape[1], 2))
+
+把图卷积层堆叠起来。这里我们仅用单位阵作为特征表示。也就是说，我们把每个结点都表示成一个one-hot编码的向量。
+
+
+def gcn_layer(A_hat, D_hat, X, W):
+    return relu(D_hat**-1 * A_hat * X * W)
+H_1 = gcn_layer(A_hat, D_hat, I, W_1)
+H_2 = gcn_layer(A_hat, D_hat, H_1, W_2)
+output = H_2
+
+然后提取特征表示。
+
+
+feature_representations = {
+    node: np.array(output)[node] 
+    for node in zkc.nodes()}
+
+
+看，现在的特征表示能很好地分割Zachary’s karate club。我们甚至还没有开始训练。
+
+
+注意，这个随机初始化的样例很有可能在x和y轴都给出0，所以多初始化几次才能出现这样的结果。
+
+结论
+---------------
+
+在这篇文章里，我们从非常高的角度介绍了图卷积网络，并解释了网络里每一层的每一个结点是怎么用整合其邻居的方式对特征进行表征。我们看到了如何去构建网络，以及这样的网络有多么强大。
+
+在下一部分，我会深入解释其中的技术细节并演示如何实现并训练一个图卷积神经网络，用最新提出的半监督学习的方式。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
