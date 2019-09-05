@@ -55,6 +55,7 @@
 <h1>研究日志（九月）<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
 <h2>2019-09-05<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p><strong>凌晨</strong></p>
 <p>和黎博士在机房里一起研究了半天终于成功使用锐龙3700全核心满速编译出UE4</p>
 <s>AMD, YES！</s>结果发现原来背后的原因是，有个沙雕的编译优化插件，<s>不交钱买正版就会压你CPU使用率，遂怒删之</s><p>在黎博士的启发下我也突然想到了解决之前文件读不了的问题的思路</p>
 于是<s>转手就是一阵代码魔改</s>成功让data_loader动了起来，两个模型的数据集特征提取工作也全部成功完成<p>原理是把大对象的索引以文件名拆成一个个小文件然后保存在文件夹里</p>
@@ -62,7 +63,30 @@
 </pre></div>
 </div>
 <p>然后终于让VQA Challenge 2017 TOP 1的模型成功跑了起来，回去睡觉+挂机等待结果……</p>
-<p>TO DO : 给视觉特征增加缓存。batch_size为512时训练一个epoch居然要近15分钟，查看资源使用情况发现cpu和gpu使用率都很低，应该是由于视觉特征被我拆成12w+个小文件然后卡IO了……</p>
+<p>TODO: 给视觉特征增加缓存。batch_size为512时训练一个epoch居然要近15分钟，查看资源使用情况发现cpu和gpu使用率都很低，应该是由于视觉特征被我拆成12w+个小文件然后卡IO了……</p>
+<p><strong>中午</strong></p>
+<p>昨晚笔记本带回寝室后没接上电源，结果一夜没动它居然又把电全耗完了</p>
+<s>强烈吐槽某巨硬的休眠模式，做得跟没用一样</s><p>来到机房查看训练结果，相当惨烈。TODO：反思失败原因。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><img alt="../../_images/accuracy_train.png" class="first last" src="../../_images/accuracy_train.png" />
+</td>
+<td><img alt="../../_images/accuracy_eval.png" class="first last" src="../../_images/accuracy_eval.png" />
+</td>
+</tr>
+<tr class="row-even"><td><img alt="../../_images/loss_train.png" class="first last" src="../../_images/loss_train.png" />
+</td>
+<td><img alt="../../_images/loss_eval.png" class="first last" src="../../_images/loss_eval.png" />
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>傍晚</strong></p>
+<p>今天的天气真的是非常的好。</p>
 </div>
 <div class="section" id="id3">
 <h2>2019-09-04<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
