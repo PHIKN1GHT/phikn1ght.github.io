@@ -1,5 +1,5 @@
 .. post:: 2019-8-30
-    :tags: ICPC
+    :tags: 
     :author: φKN1GHT
     :exclude:
 

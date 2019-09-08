@@ -31,6 +31,42 @@
 </content>
   </entry>
   <entry xml:base="True/blog/atom.xml">
+    <title type="text">A1948 The writing on the wall</title>
+    <id>True/articles/solutions/jisuanke/A1948/</id>
+    <updated>2019-09-02T00:00:00Z</updated>
+    <published>2019-09-02T00:00:00Z</published>
+    <link href="True/articles/solutions/jisuanke/A1948/" />
+    <author>
+      <name>φKN1GHT</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nanti.jisuanke.com/t/A1948&quot;&gt;题面连接&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="True/blog/atom.xml">
+    <title type="text">A1947 An Olympian Math Problem</title>
+    <id>True/articles/solutions/jisuanke/A1947/</id>
+    <updated>2019-09-02T00:00:00Z</updated>
+    <published>2019-09-02T00:00:00Z</published>
+    <link href="True/articles/solutions/jisuanke/A1947/" />
+    <author>
+      <name>φKN1GHT</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nanti.jisuanke.com/t/A1947&quot;&gt;题面连接&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="True/blog/atom.xml">
+    <title type="text">A1956 Sum</title>
+    <id>True/articles/solutions/jisuanke/A1956/</id>
+    <updated>2019-09-01T00:00:00Z</updated>
+    <published>2019-09-01T00:00:00Z</published>
+    <link href="True/articles/solutions/jisuanke/A1956/" />
+    <author>
+      <name>φKN1GHT</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nanti.jisuanke.com/t/A1956&quot;&gt;题面连接&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="True/blog/atom.xml">
     <title type="text">ICPC2018南京赛区网络预赛题解</title>
     <id>True/articles/solution_to_2018_icpc_nanjing_online/</id>
     <updated>2019-08-31T00:00:00Z</updated>
@@ -39,7 +75,7 @@
     <author>
       <name>φKN1GHT</name>
     </author>
-    <content type="html">&lt;p&gt;又是一组题解&lt;/p&gt;
+    <content type="html">&lt;p&gt;标签：&lt;a class=&quot;reference internal&quot; href=&quot;tag/number-theory/&quot; title=&quot;Number theory&quot;&gt;&lt;span class=&quot;xref std std-ref&quot;&gt;Number theory&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="True/blog/atom.xml">

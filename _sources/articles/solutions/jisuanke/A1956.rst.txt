@@ -1,0 +1,88 @@
+.. post:: 2019-9-1
+    :exclude:
+    :tags: 计蒜客, Number theory
+    :author: φKN1GHT
+
+A1956 Sum
+---------------------------
+
+`题面连接 <https://nanti.jisuanke.com/t/A1956>`_
+
+题目描述
+++++++++
+
+定义 :math:`f(n)` 为使得 :math:`n=ab` 且满足 :math:`a,b` 都不包含平方数因子（除了1以外）的数对的个数。求解 :math:`\sum_{i=1}^nf(i)` 
+
+解题思路
+++++++++
+
+（本题思路搬运自 `kuangbin的博客 <https://kuangbin.github.io/2018/09/01/2018-ACM-ICPC-Nanjing-online-J/>`_ ）
+
+考虑 :math:`f(n)` 的几种情况，
+
+首先，若存在质数 :math:`p` 与整数 :math:`i>2,q` 使得 :math:`n=p^i\times q` 则 :math:`f(n)\equiv 0`
+
+证明：考虑 :math:`i=3` 的情况，此时 :math:`a,b` 中必有一项会包含因子 :math:`p^2` ，不符合题意。:math:`i>3` 时同理。
+
+由此可推得， :math:`n` 的每个质因数的指数只有可能是1或者2。因此分别考虑两种情况下对结果的贡献：
+
+若指数是1，可能存在两种情况： :math:`p` 是 :math:`a` 的因子或是 :math:`a|n` 的因子。若指数是2，那么只能有一种情况： :math:`p` 即是 :math:`a` 的因子也是 :math:`a|n` 的因子。 
+
+所以，我们现在知道了如何求出单个 :math:`f(n)` 。但题目需要求出 :math:`\sum _1^{2 \times10^7}f(n)` ，因此需要寻找针对此和式的更有效的方法。
+
+**递推**
+
+考虑如何缩减问题规模，使得尽可能避免重复计算。
+
+依然令 :math:`n=p^i\times q` ， 则由前文，有
+
+.. math::
+    
+    f(n)=\begin{cases} 2\times f(q)&, i=1 \\ f(q)&, i=2 \\ 0&, i>2  
+    \end{cases}
+
+一种很直观的处理方式是先筛出范围内所有质数，然后按照上式从最小质因子开始从小到大递推。
+
+但是实际试下来这样写很容易被卡常，这里介绍一种源自 `nowting的博客 <https://blog.csdn.net/weixin_42373330/article/details/97824729>`_ 的优化方法。
+
+**把递推过程加入筛内**
+
+题解代码
+++++++++
+
+.. code-block:: cpp
+    :linenos:
+
+    #include <bits/stdc++.h>
+    #define ll long long 
+    using namespace std;
+    const int N=20000007;
+    int prime[N+1]; ll a[N];
+
+    void getPrime() {
+        memset(prime,0,sizeof(prime));
+        a[0]=1;a[1]=1;
+        for(int i=2;i<=N;i++){
+            if(!prime[i])
+                prime[++prime[0]]=i,a[i]=2;
+            for(int j=1;j<=prime[0]&&prime[j]*i<=N;j++) {
+                prime[prime[j]*i]=1;
+                if(i%prime[j]==0)
+                    if(i/prime[j]%prime[j]==0)
+                        a[prime[j]*i]=0;
+                    else
+                        a[prime[j]*i]=a[i/prime[j]];
+                else
+                    a[prime[j]*i]=2*a[i];
+                if(i%prime[j]==0) break;
+            }
+        }
+        for(int i=2;i<=N;i++) a[i]+=a[i-1];
+    }
+
+    int main() {
+        getPrime();int t, n;scanf("%d",&t);
+        while(t--)scanf("%d",&n),printf("%lld\n",a[n]);
+        return 0;
+    }
+

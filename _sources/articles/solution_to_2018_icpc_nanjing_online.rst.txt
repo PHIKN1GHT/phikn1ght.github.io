@@ -1,15 +1,12 @@
 .. post:: 2019-8-31
     :exclude:
-    :tags: ICPC, Number theory
+    :tags: ICPC
     :author: φKN1GHT
-
-    又是一组题解
 
 ICPC2018南京赛区网络预赛题解
 ============================
 
-.. contents:: 文章目录
-    :depth: 2
+标签：:ref:`Number theory <tag-number-theory>`
 
 前言
 ----
@@ -22,127 +19,16 @@ ICPC2018南京赛区网络预赛题解
 
 于是趁着明天南京赛区网络赛之前先把去年的题给补了
 
-`题面连接 <https://nanti.jisuanke.com/acm?kw=ACM-ICPC%202018%20%E5%8D%97%E4%BA%AC%E8%B5%9B%E5%8C%BA%E7%BD%91%E7%BB%9C%E9%A2%84%E8%B5%9B>`_
+（后续：当天只补完了3题otz）
 
-A. An Olympian Math Problem
----------------------------
+`题目列表 <https://nanti.jisuanke.com/acm?kw=ACM-ICPC%202018%20%E5%8D%97%E4%BA%AC%E8%B5%9B%E5%8C%BA%E7%BD%91%E7%BB%9C%E9%A2%84%E8%B5%9B>`_
 
-标签：:ref:`Number theory <tag-number-theory>`
+**题解**
 
-题目描述
-++++++++
+.. toctree::
+    :maxdepth: 1
 
-给定 :math:`2\leq n\leq 10^{18}`，令 :math:`S(n)=\sum_{i=1}^n i\times i!`，求解 :math:`S(n)\bmod n`
-
-解题思路
-++++++++
-
-由 :math:`n\times n!=(n+1-1)\times n!=(n+1)\times n! - n!=(n+1)!-n!`
-
-对原式进行变换
-
-.. math::
-
-    \begin{align}S(n)&=1\times 1!+2\times 2!+\dots+n\times n!\\&= 2!-1!+3!-2!+\dots+(n+1)!-n!\\&=(n+1)!-1\end{align}
-
-根据模运算性质，则有
-
-.. math::
-    \begin{align}S(n)\bmod n&=[(n+1)!-1]\bmod n\\&= [(n+1)!+n-1]\bmod n
-    \\&=[(n+1)!]\bmod n+(n-1)\bmod n\\&=(n-1)\bmod n=n-1\end{align}
-
-题解代码
-++++++++
-
-.. code-block:: cpp
-    :linenos:
-
-    #include <bits/stdc++.h>
-    using namespace std;
-    unsigned long long T, n;
-
-    int main() {
-        cin >> T; while(T--) cin >> n, cout << n - 1 << endl;
-        return 0;
-    }
-
-B. The writing on the wall
----------------------------
-
-题目描述
-++++++++
-
-给定 :math:`1\leq n\leq 10^5, 1\leq m\leq 100, 0 \leq k \leq 10^5, 1\leq x \leq n, 1 \leq y \leq m` ，设若 :math:`n\times m` 的方格内有 :math:`k` 个被涂色，求所有不含涂色方格的矩形的个数 
-
-解题思路
-++++++++
-
-我们考虑每个方格对矩形总数的贡献。设形状为 :math:`i\times j` 方格为右下角时能数出的矩形个数为 :math:`f(i,j)` ，先从不涂色的情况开始考虑，显然此时有
-
-.. math::
-
-    f(N,M)=\sum_{i=1}^N\sum_{j=1}^M\sum_{k=1}^ji
-
-
-考虑若在 :math:`(I,J)` 处存在一个涂色点
-
-首先肯定不影响任何 :math:`(i\leq I\lor j\leq J)` 的情况
-
-接着，显然在 :math:`(i=I,j=M>J)` 时
-
-.. math::
-
-    f(I,M)=\sum_{i=1}^{I-1}\sum_{j=1}^M\sum_{k=1}^ji+\sum_{j=1}^{J-1}\sum_{k=1}^jI
-
-.. note:: 式子的前一项表示当 :math:`i<I` 时原式不受影响，后一项表示当  :math:`i=I` 时，仅前 :math:`J-1` 列具有贡献，之后的列都因为包含了色块而贡献为零。
-
-考虑推广到 :math:`(i=N>I,j=M>J)` ，则对于每一个 :math:`(i>I,j)` 来说，其对总体结果的贡献与第 :math:`(I,j)` 个格子相等。因此，有：
-
-.. math::
-
-    f(N,M)=\sum_{i=1}^{I-1}\sum_{j=1}^M\sum_{k=1}^ji+\sum_{i=I}^{N}\sum_{j=1}^{J-1}\sum_{k=1}^ji
-
-接着，考虑存在多个色块的情况。设色块的集合为 :math:`S` 
-
-我们同样先从特殊情况也即 :math:`(i=I,j=M>J)` 开始考虑
-
-可以发现，确定行号后，每一列列末方块的贡献受制于该列上的行号最小的色块（若存在），即其仅受限于 :math:`(i_{\min},j) \quad \text{s.t.} \quad (i,j)\in S` ，那么很自然的思路是预处理出每一列存在的所有色块的行号的最小值，然后
-
-
-**然后我就推不下去了 (´Д｀) 过几天再来看吧**
-
-题解代码
-++++++++
-
-.. code-block:: cpp
-    :linenos:
-
-    #include <bits/stdc++.h>
-    using namespace std;
-    int b[100010][110], h[110];
-
-    int main() {
-        int T; cin >> T;
-        for (int t = 1; t <= T; t++) {
-            int n,m,k;cin>>n>>m>>k;int x,y;
-            for(int i=1;i<=n;i++)for(int j=1;j<=m;j++)b[i][j]=0;
-            for(int j=1;j<=m;j++)h[j]=0;
-            for(int i=1;i<=k;i++)cin>>x>>y,b[x][y]=1;
-            long long ans = 0;
-            for(int i=1;i<=n;i++){
-                for(int j=1;j<=m;j++)if(b[i][j])h[j]=i;
-                for(int j=1;j<=m;j++){
-                    long long minv = 0x7f7f7f7f7f7f7f7f;
-                    for(int k=j;k>0;k--){
-                        minv=min(minv, (long long)(i-h[k]));ans+=minv;
-                    }
-                }
-            }
-            cout<< "Case #" << t << ": " << ans << endl;
-        }
-        return 0;
-    }
-
-
-**博主卡题中……**
-
+    A. An Olympian Math Problem <solutions/jisuanke/A1947>
+    B. The writing on the wall <solutions/jisuanke/A1948>
+    J. Sum <solutions/jisuanke/A1956>
+    
