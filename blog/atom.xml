@@ -5,7 +5,7 @@
   <updated>2019-09-04T00:00:00Z</updated>
   <link href="True" />
   <link href="True/blog/atom.xml" rel="self" />
-  <generator uri="http://ablog.readthedocs.org" version="0.9.4">ABlog</generator>
+  <generator uri="https://ablog.readthedocs.org" version="0.10.0">ABlog</generator>
   <entry xml:base="True/blog/atom.xml">
     <title type="text">研究日志（九月）</title>
     <id>True/articles/research_log/</id>
@@ -100,6 +100,19 @@
       <name>φKN1GHT</name>
     </author>
     <content type="html">&lt;p&gt;&lt;strong&gt;本文并未完结且大量内容为对原文内容的脑内机翻，请谨慎阅读或是等待笔者补完&lt;/strong&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="True/blog/atom.xml">
+    <title type="text">作为单子(Monad)的承诺(Promise)对象</title>
+    <id>True/articles/promise_is_a_monad/</id>
+    <updated>2019-08-28T00:00:00Z</updated>
+    <published>2019-08-28T00:00:00Z</published>
+    <link href="True/articles/promise_is_a_monad/" />
+    <author>
+      <name>φKN1GHT</name>
+    </author>
+    <content type="html">&lt;p&gt;Monad不就是个自函子范畴上的幺半群，这有什么难理解的（A monad is just a monoid in the category of endofunctors）
+—— Phillip Wadler&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="True/blog/atom.xml">

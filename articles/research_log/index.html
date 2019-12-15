@@ -1,11 +1,9 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>研究日志（九月） &#8212; 旅人札记</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +12,6 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/translations.js"></script>
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="author" title="关于这些文档" href="../../about/" />
     <link rel="index" title="索引" href="../../genindex/" />
@@ -135,7 +132,7 @@
 <p>和黎博士在机房里一起研究了半天终于成功使用锐龙3700全核心满速编译出UE4</p>
 <s>AMD, YES！</s>结果发现原来背后的原因是，有个沙雕的编译优化插件<s>不交钱买正版就会压你CPU使用率</s>，遂怒删之<p>在黎博士的启发下我也突然想到了解决之前文件读不了的问题的思路</p>
 于是<s>转手就是一阵代码魔改</s>成功让data_loader动了起来，两个模型的数据集特征提取工作也全部成功完成<p>原理是把大对象的索引以文件名拆成一个个小文件然后保存在文件夹里</p>
-<s>然而试着用通配符mv的时候发现居然爆参数了！于是只能find+管道符一通操作</s><div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="n">data</span><span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*_vfeats*.pkl&quot;</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="n">i</span> <span class="n">mv</span> <span class="p">{}</span> <span class="o">../</span><span class="n">vfeats</span><span class="o">/</span>
+<s>然而试着用通配符mv的时候发现居然爆参数了！于是只能find+管道符一通操作</s><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find data/ -name <span class="s2">&quot;*_vfeats*.pkl&quot;</span> <span class="p">|</span> xargs -i mv <span class="o">{}</span> ../vfeats/
 </pre></div>
 </div>
 <p>然后终于让VQA Challenge 2017 TOP 1的模型成功跑了起来，回去睡觉+挂机等待结果……</p>
@@ -143,20 +140,20 @@
 <p><strong>中午</strong></p>
 <p>昨晚笔记本带回寝室后没接上电源，结果一夜没动它居然又把电全耗完了</p>
 <s>强烈吐槽某巨硬的休眠模式，做得跟没用一样</s><p>来到机房查看训练结果，相当惨烈。TODO：反思失败原因。</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="48%" />
-<col width="52%" />
+<col style="width: 48%" />
+<col style="width: 52%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><img alt="../../_images/accuracy_train.png" class="first last" src="../../_images/accuracy_train.png" />
+<tbody>
+<tr class="row-odd"><td><img alt="../../_images/accuracy_train.png" src="../../_images/accuracy_train.png" />
 </td>
-<td><img alt="../../_images/accuracy_eval.png" class="first last" src="../../_images/accuracy_eval.png" />
+<td><img alt="../../_images/accuracy_eval.png" src="../../_images/accuracy_eval.png" />
 </td>
 </tr>
-<tr class="row-even"><td><img alt="../../_images/loss_train.png" class="first last" src="../../_images/loss_train.png" />
+<tr class="row-even"><td><img alt="../../_images/loss_train.png" src="../../_images/loss_train.png" />
 </td>
-<td><img alt="../../_images/loss_eval.png" class="first last" src="../../_images/loss_eval.png" />
+<td><img alt="../../_images/loss_eval.png" src="../../_images/loss_eval.png" />
 </td>
 </tr>
 </tbody>
@@ -226,7 +223,7 @@
   <h2>
   
   <i class="fa fa-calendar"></i>
-    2019年9月04日 
+    2019年Sep04日 
   
   </h2>
 
@@ -237,7 +234,7 @@
   <li id="author"><span><i class="fa-fw fa fa-user"></i></span>
     
       
-      φKN1GHT
+      <a href="../../blog/author/φkn1ght/">φKN1GHT</a>
       
     </li>
   
@@ -266,7 +263,7 @@
 </ul>
 
 
-  <h3><a href="../../blog/tag/">标签</a></h3>
+  <h3><a href="../../blog/tag/">Tags</a></h3>
   <style type="text/css">
     ul.ablog-cloud {list-style: none; overflow: auto;}
     ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
@@ -295,29 +292,32 @@
       
     
       
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/函数式编程/">函数式编程</a></li>
+      
+    
+      
       <li class="ablog-cloud ablog-cloud-5">
         <a href="../../blog/tag/计蒜客/">计蒜客</a></li>
       
     
   </ul>
 
-  <h3><a href="../../blog/archive/">归档</a></h3>
+  <h3><a href="../../blog/archive/">Archives</a></h3>
   <ul>
   
     
-    <li><a href="../../blog/2019/">2019 (10)</a></li>
+    <li><a href="../../blog/2019/">2019 (11)</a></li>
     
   
   </ul>
 
 <div id="searchbox" style="display: none" role="search">
-  <h3>快速搜索</h3>
+  <h3 id="searchlabel">快速搜索</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search/" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="转向" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -330,7 +330,7 @@
       &copy;2019, φKN1GHT.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
