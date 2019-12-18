@@ -31,42 +31,6 @@
 </content>
   </entry>
   <entry xml:base="True/blog/atom.xml">
-    <title type="text">CCF ADL104《新一代视觉计算》课程内容回顾（Day2）</title>
-    <id>True/articles/review_of_adl104_day2/</id>
-    <updated>2019-09-02T00:00:00Z</updated>
-    <published>2019-09-02T00:00:00Z</published>
-    <link href="True/articles/review_of_adl104_day2/" />
-    <author>
-      <name>φKN1GHT</name>
-    </author>
-    <content type="html">&lt;p&gt;《基于卷积神经网络的图像增强与编辑》、《无监督表征学习：理论、算法与应用》&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="True/blog/atom.xml">
-    <title type="text">ICPC2018南京赛区网络预赛题解</title>
-    <id>True/articles/solution_to_2018_icpc_nanjing_online/</id>
-    <updated>2019-08-31T00:00:00Z</updated>
-    <published>2019-08-31T00:00:00Z</published>
-    <link href="True/articles/solution_to_2018_icpc_nanjing_online/" />
-    <author>
-      <name>φKN1GHT</name>
-    </author>
-    <content type="html">&lt;p&gt;标签：&lt;span class=&quot;xref std std-ref&quot;&gt;Number theory&lt;/span&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="True/blog/atom.xml">
-    <title type="text">CCF ADL104《新一代视觉计算》课程内容回顾（Day1）</title>
-    <id>True/articles/review_of_adl104_day1/</id>
-    <updated>2019-08-30T00:00:00Z</updated>
-    <published>2019-08-30T00:00:00Z</published>
-    <link href="True/articles/review_of_adl104_day1/" />
-    <author>
-      <name>φKN1GHT</name>
-    </author>
-    <content type="html">&lt;p&gt;八月末，久违地再一次和 &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/HicoderDR&quot;&gt;&amp;#64;HicoderDR&lt;/a&gt; 一起来到了南京城。之前曾两次造访过这里，分别是来参加“南京四校骇客马拉松”和“全国大学生智能互联大赛全国决赛”。十分巧合的是，这两场比赛最后的结局都非常惨淡，只能无奈地抱憾而归……&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="True/blog/atom.xml">
     <title type="text">基于图卷积网络的深度学习入门(MXNET实现)</title>
     <id>True/articles/graph_convolutional_networks_with_mxnet_in_python/</id>
     <updated>2019-08-28T00:00:00Z</updated>

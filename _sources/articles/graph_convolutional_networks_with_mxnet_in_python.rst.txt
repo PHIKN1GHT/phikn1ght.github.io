@@ -301,9 +301,9 @@ W_2 = np.random.normal(
 
 把图卷积层堆叠起来。这里我们仅用单位阵作为特征表示。也就是说，我们把每个结点都表示成一个one-hot编码的向量。
 
-
 def gcn_layer(A_hat, D_hat, X, W):
     return relu(D_hat**-1 * A_hat * X * W)
+
 H_1 = gcn_layer(A_hat, D_hat, I, W_1)
 H_2 = gcn_layer(A_hat, D_hat, H_1, W_2)
 output = H_2
