@@ -3,23 +3,15 @@
     :author: φKN1GHT
     :exclude:
 
+    新坑
+
 
 作为单子(Monad)的承诺(Promise)对象
 ===============================================
 
-
-
-
-
 Monad不就是个自函子范畴上的幺半群，这有什么难理解的（A monad is just a monoid in the category of endofunctors）
+
 —— Phillip Wadler
-
-作者：一个会写诗的程序员
-链接：https://www.jianshu.com/p/cf28f2e5a905
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-
-
 
 
 
