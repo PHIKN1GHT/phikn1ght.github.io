@@ -7,6 +7,18 @@
   <link href="True/blog/atom.xml" rel="self" />
   <generator uri="https://ablog.readthedocs.org" version="0.10.0">ABlog</generator>
   <entry xml:base="True/blog/atom.xml">
+    <title type="text">新坑预告：基于 Flask 与 React 的开源实用工具集 Applied Toolkit</title>
+    <id>True/articles/yet_another_new_project/</id>
+    <updated>2019-12-15T00:00:00Z</updated>
+    <published>2019-12-15T00:00:00Z</published>
+    <link href="True/articles/yet_another_new_project/" />
+    <author>
+      <name>φKN1GHT</name>
+    </author>
+    <content type="html">&lt;p&gt;新坑预告&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="True/blog/atom.xml">
     <title type="text">对于新生赛的反思总结</title>
     <id>True/articles/about_efpc_2019/</id>
     <updated>2019-12-15T00:00:00Z</updated>
