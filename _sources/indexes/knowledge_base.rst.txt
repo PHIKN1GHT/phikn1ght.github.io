@@ -1,7 +1,0 @@
-知识体系索引
-============
-
-.. toctree::
-	:maxdepth: 1
-	
-	../knowledge_base/icpc
