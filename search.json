@@ -1,0 +1,1 @@
+[{"title":"新样式，新起点","url":"/2021/01/23/yet-another-web-log/","content":"\n没错，在几乎没有新增任何文章的情况下，我又一次为博客更换了框架。这次回到了Hexo，主要是由于发现先前公式渲染上遇到的问题似乎已经得到解决。<!-- more -->\n\n使用的主题：[hexo-theme-stun](https://github.com/liuyib/hexo-theme-stun)\n\n使用的插件：\n\n- hexo-filter-mathjax\n- hexo-renderer-pandoc\n\n近期会陆续将旧的博文搬运至新框架内。"}]
