@@ -1,0 +1,624 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="msvalidate.01" content="8F5C00D474F3C2F3FBA67DB2A220529E"><meta name="baidu-site-verification" content="code-tSBpKB2i8g"><meta name="description" content="服务器信息        UPD：已弃坑  简介  　　本服务器名为 Delta Vault ，是由华东理工大学 Minecraft 交流部负责运营与维护的非盈利性质的多模组生存服务器。当前版本以群峦传说为主打模组，力求增强游戏的乐趣与体验。服务器端与客户端均由 TNFC 整合包修改而来。服务器当前采用玩家邀请制度，即由已经获得游戏资格的玩家向管理员申请添加白名单。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Delta Vault 玩家手册">
+<meta property="og:url" content="https://phikn1ght.github.io/2017/08/14/a-guide-for-players/index.html">
+<meta property="og:site_name" content="旅人札记">
+<meta property="og:description" content="服务器信息        UPD：已弃坑  简介  　　本服务器名为 Delta Vault ，是由华东理工大学 Minecraft 交流部负责运营与维护的非盈利性质的多模组生存服务器。当前版本以群峦传说为主打模组，力求增强游戏的乐趣与体验。服务器端与客户端均由 TNFC 整合包修改而来。服务器当前采用玩家邀请制度，即由已经获得游戏资格的玩家向管理员申请添加白名单。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-08-14T10:43:21.000Z">
+<meta property="article:modified_time" content="2021-02-08T15:11:39.222Z">
+<meta property="article:author" content="φKN1GHT">
+<meta property="article:tag" content="其它">
+<meta name="twitter:card" content="summary"><title>Delta Vault 玩家手册 | 旅人札记</title><link ref="canonical" href="https://phikn1ght.github.io/2017/08/14/a-guide-for-players/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: {"avoidBanner":true},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://phikn1ght.github.io/"><span class="header-nav-submenu-item__icon"><i class="fas fa-blog"></i></span><span class="header-nav-submenu-item__text">主站</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" target="_blank" rel="noopener" href="https://kale1d0.gitee.io/"><span class="header-nav-submenu-item__icon"><i class="fas fa-clone"></i></span><span class="header-nav-submenu-item__text">镜像</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-address-card"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">旅人札记</div><div class="header-banner-info__subtitle">人生若苦旅，砥砺方前行。所经休憩处，草木皆风景。</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Delta Vault 玩家手册</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2017-08-14</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-02-08</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
+        <h3 id="服务器信息">
+          <a href="#服务器信息" class="heading-link"><i class="fas fa-link"></i></a>服务器信息</h3>
+      
+<p><strong>UPD：已弃坑</strong></p>
+<ul>
+<li><em>简介</em></li>
+</ul>
+<p>　　本服务器名为 Delta Vault ，是由华东理工大学 Minecraft 交流部负责运营与维护的非盈利性质的多模组生存服务器。当前版本以群峦传说为主打模组，力求增强游戏的乐趣与体验。服务器端与客户端均由 TNFC 整合包修改而来。服务器当前采用玩家邀请制度，即由已经获得游戏资格的玩家向管理员申请添加白名单。由于服务器目前无本地化计划，所以要想获得较好的游戏体验需要一定的英文基础。不过服务器的相关教程正在被逐步完善，我们也鼓励并欢迎所有玩家参与到教程补完计划中。</p>
+<a id="more"></a>
+<ul>
+<li><em>这个 Minecraft 和我玩过的好像不太……一样？</em></li>
+</ul>
+<p>　　由于服务器采用群峦传说（TerraFirmaCraft）作为核心模组，使得游戏特性与原版大不相同。相对于原版，群峦传说从现实中获得灵感，使游戏体验更加有趣，同时也增加了游戏的挑战性。群峦传说为游戏带来了季节系统。游戏内一天的时间为现实世界里的20分钟，而一年有360天，也即现实世界里的5天。一年有十二个月、四个季节，随着季节的流转，树木的叶子会逐渐变色，作物也会渐渐生长成熟。而水果的收成主要集中在秋季。除了季节系统，群峦还加入了降雨量、温度等概念。前者影响了植被类型，而后者影响了植被的生长速度与食物的腐烂速度等等。同时，海平面被提高为原版的几乎两倍，并加入了岩层的概念。而岩层也决定了可能生成的矿物的类型。玩家可以通过完成手中的任务书里的任务来逐步探索这个世界。总之，一个更为真实且充满了挑战性的世界等待着你来征服。</p>
+
+        <h3 id="入门教程">
+          <a href="#入门教程" class="heading-link"><i class="fas fa-link"></i></a>入门教程</h3>
+      
+<ul>
+<li><em>注册与登录</em></li>
+</ul>
+<p>　　初次进入服务器时，您需要使用指令<code>/auth register &lt;您的密码&gt;</code>为您的账户创建一个密码。随后，您需要输入<code>/auth login &lt;您的密码&gt;</code>来正式登入服务器。当您注册后，每次连接至服务器时都需要输入<code>/auth login &lt;您的密码&gt;</code>来确认您的身份。注意，由于服务器将<strong>以明文形式记录所有指令操作</strong>，这意味着服务器管理团队将能够看见您创建密码的指令，所以<strong>不建议将常用的密码设为服务器的登录密码</strong>，否则如果服务器的记录数据外泄将会对您的隐私造成严重的威胁。<strong>另外，由于增加了验证系统的原因，您的背包需要在您成功登陆数秒后才可打开</strong>。</p>
+<ul>
+<li><em>传送与重生</em></li>
+</ul>
+<p>　　服务器的一切传送指令都有三秒等待时间。若在这三秒内，玩家进行移动或收到攻击，传送请求将会被取消。初次进入服务器时，玩家的重生点将被默认设置在出生地。当玩家合成出床并在其上睡过之后，玩家将从上次睡过的床附近重生。使用<code>/bed</code>可以将您传送至您的重生点。当玩家死亡后，一个墓碑将在玩家死亡的地点附近生成，而玩家的所有物品将会被保存在其中。<strong>任何玩家都可以拿取其中的物品</strong>。可使用<code>/back</code>指令回到死亡地点或上次传送发生之前的地点。可以使用<code>/tpa &lt;玩家姓名&gt;</code>向玩家发送传送到对方身边的申请，或使用<code>/tpa &lt;玩家姓名&gt; here</code>向玩家发送传送对方到自己身边的申请。当您收到申请后，您需要在一定时间内使用指令<code>/yes</code>来接受申请，或者使用指令<code>/no</code>拒绝申请。使用<code>/top</code>可以使您被传送至当前位置的最高处，可以使用该指令快速离开地下矿洞。玩家可以使用指令<code>/home set</code>来将当前位置设为自己的家，随后使用<code>/home</code>来传送回家。玩家可以使用指令<code>/warp &lt;传送点名&gt;</code>进行定点传送，公告传送点列表请关注服务器公告。每位玩家还可以为自己设置两个私人传送点。您可以使用指令<code>/pwarp &lt;私人传送点名&gt; set</code>来创建私人传送点，或是使用指令<code>/pwarp &lt;私人传送点名&gt; delete</code>删除您的私人传送点。您需要使用指令<code>/pwarp &lt;私人传送点名&gt;</code>来传送自己致您的私人传送点。</p>
+<ul>
+<li><em>领地与好友</em></li>
+</ul>
+<p>　　服务器采用领地系统保护您的个人财产。当您通过身份认证后，您可以在背包界面的左方看到一排图标，依次是好友系统、领地系统、玩家指引、服务器信息和客户端相关设置。您可以点击第二个图标打开领地系统的操作界面。您可以通过左键点击标注为<code>Wilderness</code>的区块来将其宣称为您的领地，或者右键点击您的领地来解除宣称。<strong>领地的宣称依循先到先得原则</strong>。界面右下角的第二行为您可以宣称的领地的数目与其上限。同时，您可以按住Ctrl键后点击您的领地，将其转化为持续加载的领地，或是按住Ctrl键后右键点击以取消。界面右下角的第一行为您可以保持持续加载的领地的数目与其上限。界面右上角的三个图标分别为确认并关闭界面、刷新当前领地宣称状态与取消您所有宣称的领地。当领地保持持续加载时，领地内的装置（主要指带有红石的自动化多方块结构，也包括各类树场等）将持续工作。<strong>原则上，服务器要求所有玩家在下线前关闭自己的所有装置，否则管理员有权拆除并没收其所得</strong>。在被宣称的领地内，任何不是您的好友的玩家将无法放置或破坏方块，也无法与任何装置进行交互。<strong>如果发生任何领地纠纷，请联系管理员参与解决</strong>。您可以点击第一个图标打开好友系统的操作界面。在左侧点击其他玩家后，您可以选择发送好友申请。如果对方已经是你的好友，您可以选择删除好友。当对方向您发送好友申请后，您可以选择接受或是拒绝。更多操作细节可查询 FTB Utilities 模组的相关教程。</p>
+<ul>
+<li><em>经济与交易</em></li>
+</ul>
+<p>　　服务器装有虚拟货币系统。您可以输入指令<code>/wallet</code>来查询您的余额。您可以使用<code>/pay &lt;玩家姓名&gt; &lt;金额&gt;</code>来向某位玩家支付一定数量的货币。服务器支持玩家间的一对一交易。您需要用手拿着您想出售的物品，然后输入<code>/trade &lt;玩家姓名&gt; &lt;物品单价&gt;</code>来向某位玩家发起交易申请。<strong>当双方都输入指令<code>/yes</code>后</strong>，交易将完成。您手中拿着的物品将以您定下的单价被全部出售给对方。如果任意一方使用了指令<code>/no</code>，交易将会被取消。服务器<strong>暂不支持设立公共商店</strong>。服务器虚拟货币的流通将依赖于出生地附近的系统商店（待建设）。</p>
+<ul>
+<li><em>聊天与频道</em></li>
+</ul>
+<p>　　您可能已经注意到，服务器的聊天框与原版并不相同。初始状态下，服务器共有两个聊天频道：<code>#global</code>和<code>#local</code>。前者为全局聊天频道，后者为本地聊天频道。本地聊天频道内发言的有效范围为以60个方块为半径的圆形区域内。使用指令<code>/join &lt;频道名&gt;</code>来加入或创建（如果不存在）一个频道。使用指令<code>/part &lt;频道名&gt;</code>离开频道。</p>
+<ul>
+<li><em>记录与回滚</em></li>
+</ul>
+<p>　　服务器支持玩家行为的记录与回滚。由于记录系统会记录玩家的一切指令包括登录密码，所以记录查询<strong>暂不对玩家开放</strong>。如有查询需求请联系管理员。服务器每六小时备份一次地图，并保留近五天内的所有备份。如果遇到大面积地图破损行为则可能会全局回档或部分区块回档。如有相关需求请联系管理员。</p>
+<ul>
+<li><em>地图与边界</em></li>
+</ul>
+<p>　　服务器的地图是以出生地为中心，2048个方块的长度为半径的方形区域。可探索区域大小约为 16,000,000 余平方方块。服务器的地图已预先生成，如有扩图需求请联系管理员。<strong>优先受理捐款者的扩图申请</strong>。客户端预装模组<code>JourneyMap</code>可以很容易的设置标记。按<code>J键</code>打开大地图。点击右手边第一个按钮进入标记管理界面。点击<code>New</code>按钮即可在当前位置设立标记。在标记管理界面内对标记使用<code>Delete</code>按钮即可删除该标记。灵活使用标记将大大节省您的游戏时间。</p>
+<ul>
+<li><em>其他技巧</em></li>
+</ul>
+<p>　　您可以使用指令<code>/afk</code>进入离开模式。如同传送指令，离开模式的开启需要十秒等待时间。若您超过十分钟未进行任何操作，您也会被强制进入离开模式。进行任意操作或再次输入指令<code>/afk</code>将使您退出离开模式。当您的等级提升后，您的最大生命值也将得到提升。</p>
+<ul>
+<li><em>推荐教程列表</em></li>
+</ul>
+<p>　　<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://wiki.terrafirmacraft.com/Main_Page">TFC Wiki</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>、<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://tieba.baidu.com/p/3431179104">群峦传说教程</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>、<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://space.bilibili.com/5707552#!/channel/detail?cid=14151">悟欣 TNFC 群峦传说</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://phikn1ght.github.io">φKN1GHT</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://phikn1ght.github.io/2017/08/14/a-guide-for-players/">https://phikn1ght.github.io/2017/08/14/a-guide-for-players/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://phikn1ght.github.io/tags/%E5%85%B6%E5%AE%83/">其它</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2017/09/26/clippings-17-09-26/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">摘抄整理（17.09.26）</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2017/07/26/a-scientific-debugging-technique/"><span class="paginator-prev__text">对拍：科学的排错方法</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BF%A1%E6%81%AF"><span class="toc-number">1.</span> <span class="toc-text">
+          服务器信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">
+          入门教程</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/avatar.png" alt="avatar"></div><p class="sidebar-ov-author__text">Keep reading &amp; writing.</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/PHIKN1GHT" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">19</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>φKN1GHT</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.3.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">访问人数</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">浏览总量</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"><script type="text/x-mathjax-config">var mathjaxMhchem = '';
+var mathJaxTex = {
+  equationNumbers: {
+    autoNumber: 'AMS'
+  }
+};
+
+if (false) {
+  mathjaxMhchem = 'https://cdn.jsdelivr.net/npm/mathjax-mhchem@3.3.2/mhchem.min.js';
+  MathJax.Ajax.config.path['mhchem'] = mathjaxMhchem;
+
+  mathJaxTex.extensions = [mathjaxMhchem];
+} else {
+  mathJaxTex.extensions = ['AMSmath.js','AMSsymbols.js'];
+}
+
+MathJax.Hub.Config({
+  menuSettings: {
+    zoom: 'None'
+  },
+  showMathMenu: false,
+  jax: ['input/TeX','output/CommonHTML'],
+  extensions: ['tex2jax.js'],
+  TeX: mathJaxTex,
+  tex2jax: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  }
+});
+
+MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+  MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+    if (data.display) {
+      var next = data.script.nextSibling;
+      while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling; }
+      if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next); }
+    }
+  });
+});
+
+MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i = 0; i < all.length; i++) {
+    document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script data-pjax="">function loadValine () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#valine-container',
+    appId: 'HwX2WbijJrvqhay8DbnTHOun-gzGzoHsz',
+    appKey: '9viDidzdUT8J2XWyJgFlg1Yc',
+    notify: true,
+    verify: true,
+    placeholder: '写下你的评论...',
+    avatar: 'mp',
+    meta: guest_info,
+    pageSize: '10' || 10,
+    visitor: false,
+    recordIP: true,
+    lang: 'zh-cn' || 'zh-cn',
+    path: window.location.pathname
+  });
+}
+
+if (true) {
+  loadValine();
+} else {
+  window.addEventListener('DOMContentLoaded', loadValine, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
