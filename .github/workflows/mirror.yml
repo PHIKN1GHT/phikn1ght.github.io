@@ -1,6 +1,6 @@
 name: Mirror
 
-on: [ psuh ]
+on: [ push ]
 
 jobs:
   build:
