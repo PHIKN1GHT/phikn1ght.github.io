@@ -35,7 +35,7 @@
 <meta property="article:tag" content="Scheme">
 <meta property="article:tag" content="过期内容">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://kale1d0.space/uploads/chez_scheme_compiling_guide/01.png"><title>Chez Scheme 编译指南 | 旅人札记</title><link ref="canonical" href="https://kale1d0.space/chez_scheme_compiling_guide/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+<meta name="twitter:image" content="https://kale1d0.space/uploads/chez_scheme_compiling_guide/01.png"><title>Chez Scheme 编译指南 | 旅人札记</title><link ref="canonical" href="https://kale1d0.space/chez_scheme_compiling_guide/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -313,7 +313,7 @@ mjx-container[display="true"] + br {
 <p>最终在某个下午，你会完全理解Scheme和它的标准，但在那之前没有人会知道需要度过多少个让人觉得满头雾水的下午。</p>
 </blockquote>
 <p>　　那么，这篇教程到这里也就要结束了，但我们的 Scheme 学习之路才刚刚开始，而且这条学习之路将无疑是漫长而又坎坷的。但是无论如何，都请保持着这样的信念：<em>享受编程，享受生活！</em></p>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://kale1d0.space">φKN1GHT</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://kale1d0.space/chez_scheme_compiling_guide/">https://kale1d0.space/chez_scheme_compiling_guide/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://kale1d0.space/tags/Scheme/">Scheme</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://kale1d0.space/tags/%E8%BF%87%E6%9C%9F%E5%86%85%E5%AE%B9/">过期内容</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/a-scientific-debugging-technique/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">对拍：科学的排错方法</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/noip2015-and-the-daily-life-of-a-math-fan/"><span class="paginator-prev__text">NOIP2015行记与数学菜狗的日常</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A5%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E5%B7%B2%E8%BF%87%E6%9C%9F%E4%BB%85%E5%8F%AF%E7%94%A8%E4%BA%8E%E5%8F%82%E8%80%83%E4%BD%9C%E8%80%85%E6%9A%82%E4%B8%8D%E6%89%93%E7%AE%97%E6%9B%B4%E6%96%B0"><span class="toc-number">1.</span> <span class="toc-text">
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://kale1d0.space">φKN1GHT</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://kale1d0.space/chez_scheme_compiling_guide/">https://kale1d0.space/chez_scheme_compiling_guide/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://kale1d0.space/tags/Scheme/">Scheme</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://kale1d0.space/tags/%E8%BF%87%E6%9C%9F%E5%86%85%E5%AE%B9/">过期内容</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/a-scientific-debugging-technique/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">对拍：科学的排错方法</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/noip2015-and-the-daily-life-of-a-math-fan/"><span class="paginator-prev__text">NOIP2015行记与数学菜狗的日常</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A5%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E5%B7%B2%E8%BF%87%E6%9C%9F%E4%BB%85%E5%8F%AF%E7%94%A8%E4%BA%8E%E5%8F%82%E8%80%83%E4%BD%9C%E8%80%85%E6%9A%82%E4%B8%8D%E6%89%93%E7%AE%97%E6%9B%B4%E6%96%B0"><span class="toc-number">1.</span> <span class="toc-text">
           该文章内容已过期，仅可用于参考，作者暂不打算更新。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-chez-scheme"><span class="toc-number">1.0.1.</span> <span class="toc-text">
           关于 Chez Scheme</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E6%96%87"><span class="toc-number">1.0.2.</span> <span class="toc-text">
           关于本文</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-visual-studio"><span class="toc-number">1.0.3.</span> <span class="toc-text">
@@ -710,32 +710,26 @@ MathJax.Hub.Queue(function() {
     document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
   }
 });
-</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script data-pjax="">function loadValine () {
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var guest_info = 'nick,mail,link';
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
 
-  guest_info = guest_info.split(',').filter(function(item) {
-    return GUEST_INFO.indexOf(item) > -1;
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: 'e6f542f5d584c1d1a9fc',
+    clientSecret: '54d060079b578ff1ae2efd681994dfdcd5c889de',
+    repo: 'phikn1ght.github.io',
+    owner: 'PHIKN1GHT',
+    admin: ['PHIKN1GHT'],
+    distractionFreeMode: 'false',
+    language: 'zh-CN'
   });
-  new Valine({
-    el: '#valine-container',
-    appId: 'HwX2WbijJrvqhay8DbnTHOun-gzGzoHsz',
-    appKey: '9viDidzdUT8J2XWyJgFlg1Yc',
-    notify: true,
-    verify: true,
-    placeholder: '写下你的评论...',
-    avatar: 'mp',
-    meta: guest_info,
-    pageSize: '10' || 10,
-    visitor: false,
-    recordIP: true,
-    lang: 'zh-cn' || 'zh-cn',
-    path: window.location.pathname
-  });
+  gitalk.render('gitalk-container');
 }
 
 if (true) {
-  loadValine();
+  loadGitalk();
 } else {
-  window.addEventListener('DOMContentLoaded', loadValine, false);
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
 }</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>

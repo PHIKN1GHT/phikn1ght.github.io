@@ -4,7 +4,7 @@
 <meta property="og:site_name" content="旅人札记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="φKN1GHT">
-<meta name="twitter:card" content="summary"><title>归档 | 旅人札记</title><link ref="canonical" href="https://kale1d0.space/archives/2018/09/index.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+<meta name="twitter:card" content="summary"><title>归档 | 旅人札记</title><link ref="canonical" href="https://kale1d0.space/archives/2018/09/index.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -532,32 +532,26 @@ MathJax.Hub.Queue(function() {
     document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
   }
 });
-</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script data-pjax="">function loadValine () {
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var guest_info = 'nick,mail,link';
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
 
-  guest_info = guest_info.split(',').filter(function(item) {
-    return GUEST_INFO.indexOf(item) > -1;
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: 'e6f542f5d584c1d1a9fc',
+    clientSecret: '54d060079b578ff1ae2efd681994dfdcd5c889de',
+    repo: 'phikn1ght.github.io',
+    owner: 'PHIKN1GHT',
+    admin: ['PHIKN1GHT'],
+    distractionFreeMode: 'false',
+    language: 'zh-CN'
   });
-  new Valine({
-    el: '#valine-container',
-    appId: 'HwX2WbijJrvqhay8DbnTHOun-gzGzoHsz',
-    appKey: '9viDidzdUT8J2XWyJgFlg1Yc',
-    notify: true,
-    verify: true,
-    placeholder: '写下你的评论...',
-    avatar: 'mp',
-    meta: guest_info,
-    pageSize: '10' || 10,
-    visitor: false,
-    recordIP: true,
-    lang: 'zh-cn' || 'zh-cn',
-    path: window.location.pathname
-  });
+  gitalk.render('gitalk-container');
 }
 
 if (true) {
-  loadValine();
+  loadGitalk();
 } else {
-  window.addEventListener('DOMContentLoaded', loadValine, false);
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
 }</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
