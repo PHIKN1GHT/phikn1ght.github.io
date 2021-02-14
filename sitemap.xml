@@ -207,6 +207,13 @@
 
   
   <url>
+    <loc>https://kale1d0.space/tags/%E5%85%B6%E5%AE%83/</loc>
+    <lastmod>2021-02-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://kale1d0.space/tags/%E9%BB%91%E5%8E%86%E5%8F%B2/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
@@ -214,7 +221,7 @@
   </url>
   
   <url>
-    <loc>https://kale1d0.space/tags/%E5%85%B6%E5%AE%83/</loc>
+    <loc>https://kale1d0.space/tags/%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -229,13 +236,6 @@
   
   <url>
     <loc>https://kale1d0.space/tags/%E7%A0%B4%E4%BA%8B%E6%B0%B4/</loc>
-    <lastmod>2021-02-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kale1d0.space/tags/%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -263,6 +263,13 @@
   </url>
   
   <url>
+    <loc>https://kale1d0.space/tags/pypbbot/</loc>
+    <lastmod>2021-02-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://kale1d0.space/tags/%E7%AE%97%E6%B3%95%EF%BC%88%E5%B9%BF%E4%B9%89%E7%9A%84%EF%BC%89/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
@@ -284,20 +291,6 @@
   </url>
   
   <url>
-    <loc>https://kale1d0.space/tags/pypbbot/</loc>
-    <lastmod>2021-02-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kale1d0.space/tags/%E9%98%85%E8%AF%BB/</loc>
-    <lastmod>2021-02-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://kale1d0.space/tags/Scheme/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
@@ -306,6 +299,13 @@
   
   <url>
     <loc>https://kale1d0.space/tags/%E8%BF%87%E6%9C%9F%E5%86%85%E5%AE%B9/</loc>
+    <lastmod>2021-02-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kale1d0.space/tags/%E9%98%85%E8%AF%BB/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
