@@ -2912,10 +2912,10 @@ html.nightmode {
   display: -ms-flexbox;
   display: box;
   display: flex;
-  float: left;
   padding: 0.5rem 1rem;
-  width: 100%;
+  width: 75%;
   height: 100px;
+  margin: auto;
   -webkit-transition: background-color 0.3s;
   -moz-transition: background-color 0.3s;
   -o-transition: background-color 0.3s;
