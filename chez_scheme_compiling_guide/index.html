@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="google-site-verification" content="gSBLPbJXcbvjsNlEmPsrS4hVK5vfm6v41c2aAGtVM1k"><meta name="msvalidate.01" content="8F5C00D474F3C2F3FBA67DB2A220529E"><meta name="baidu-site-verification" content="code-UUStnJ1ZKN"><meta name="description" content="该文章内容已过期，仅可用于参考，作者暂不打算更新                            关于 Chez Scheme        　　Chez Scheme 是由 R. Kent Dybvig 编写的 Scheme 的具体实现，包含了编译器、解释器与一些常用的库。它完整地实现了 R6RS (Scheme 语言修订报告第六版) 所描述的所有特性，而且提供了">
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="google-site-verification" content="gSBLPbJXcbvjsNlEmPsrS4hVK5vfm6v41c2aAGtVM1k"><meta name="msvalidate.01" content="8F5C00D474F3C2F3FBA67DB2A220529E"><meta name="baidu-site-verification" content="code-UUStnJ1ZKN"><meta name="description" content="该文章内容已过期，仅可用于参考，作者暂不打算更新                           关于 Chez Scheme       　　Chez Scheme 是由 R. Kent Dybvig 编写的 Scheme 的具体实现，包含了编译器、解释器与一些常用的库。它完整地实现了 R6RS (Scheme 语言修订报告第六版) 所描述的所有特性，而且提供了强大的外">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Chez Scheme 编译指南">
 <meta property="og:url" content="https://kale1d0.space/chez_scheme_compiling_guide/index.html">
 <meta property="og:site_name" content="旅人札记">
-<meta property="og:description" content="该文章内容已过期，仅可用于参考，作者暂不打算更新                            关于 Chez Scheme        　　Chez Scheme 是由 R. Kent Dybvig 编写的 Scheme 的具体实现，包含了编译器、解释器与一些常用的库。它完整地实现了 R6RS (Scheme 语言修订报告第六版) 所描述的所有特性，而且提供了">
+<meta property="og:description" content="该文章内容已过期，仅可用于参考，作者暂不打算更新                           关于 Chez Scheme       　　Chez Scheme 是由 R. Kent Dybvig 编写的 Scheme 的具体实现，包含了编译器、解释器与一些常用的库。它完整地实现了 R6RS (Scheme 语言修订报告第六版) 所描述的所有特性，而且提供了强大的外">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kale1d0.space/uploads/chez_scheme_compiling_guide/01.png">
 <meta property="og:image" content="https://kale1d0.space/uploads/chez_scheme_compiling_guide/02.png">
@@ -172,29 +172,26 @@ mjx-container[display="true"] + br {
   display: none;
 }
 </style></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://kale1d0.space/"><span class="header-nav-submenu-item__icon"><i class="fas fa-blog"></i></span><span class="header-nav-submenu-item__text">主站</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" target="_blank" rel="noopener" href="https://phikn1ght.github.io/"><span class="header-nav-submenu-item__icon"><i class="fas fa-clone"></i></span><span class="header-nav-submenu-item__text">Github镜像站</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" target="_blank" rel="noopener" href="https://kale1d0.gitee.io/"><span class="header-nav-submenu-item__icon"><i class="fas fa-clone"></i></span><span class="header-nav-submenu-item__text">Gitee镜像站</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-address-card"></i></span><span class="header-nav-menu-item__text">关于</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/friend_links/"><span class="header-nav-menu-item__icon"><i class="fas fa-arrows-alt"></i></span><span class="header-nav-menu-item__text">友链</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">旅人札记</div><div class="header-banner-info__subtitle">『须知参差百态，乃是幸福本源。』</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Chez Scheme 编译指南</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2016-06-07</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-02-06</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
-        <h2 id="该文章内容已过期仅可用于参考作者暂不打算更新">
-          <a href="#该文章内容已过期仅可用于参考作者暂不打算更新" class="heading-link"><i class="fas fa-link"></i></a>该文章内容已过期，仅可用于参考，作者暂不打算更新</h2>
+        <h2 id="该文章内容已过期，仅可用于参考，作者暂不打算更新">
+          <a href="#该文章内容已过期，仅可用于参考，作者暂不打算更新" class="heading-link"><i class="fas fa-link"></i></a><a href="#该文章内容已过期，仅可用于参考，作者暂不打算更新" class="headerlink" title="该文章内容已过期，仅可用于参考，作者暂不打算更新"></a>该文章内容已过期，仅可用于参考，作者暂不打算更新</h2>
       
-
-        <h4 id="关于-chez-scheme">
-          <a href="#关于-chez-scheme" class="heading-link"><i class="fas fa-link"></i></a>关于 Chez Scheme</h4>
-      
-<p>　　Chez Scheme 是由 R. Kent Dybvig 编写的 Scheme 的具体实现，包含了编译器、解释器与一些常用的库。它完整地实现了 <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://www.r6rs.org/">R6RS (Scheme 语言修订报告第六版)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 所描述的所有特性，而且提供了强大的外部函数调用功能，并能够编译出执行效率非常高的 Scheme 程序。</p>
+        <h4 id="关于-Chez-Scheme">
+          <a href="#关于-Chez-Scheme" class="heading-link"><i class="fas fa-link"></i></a><a href="#关于-Chez-Scheme" class="headerlink" title="关于 Chez Scheme"></a>关于 Chez Scheme</h4>
+      <p>　　Chez Scheme 是由 R. Kent Dybvig 编写的 Scheme 的具体实现，包含了编译器、解释器与一些常用的库。它完整地实现了 <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://www.r6rs.org/">R6RS (Scheme 语言修订报告第六版)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 所描述的所有特性，而且提供了强大的外部函数调用功能，并能够编译出执行效率非常高的 Scheme 程序。</p>
 <p>　　<del>营销大师</del>王垠曾在其文章<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://www.yinwang.org/blog-cn/2013/03/28/chez-scheme">《Chez Scheme 的传说》</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>中称其“比最高级的 C 编译器还要简单很多，却生成几乎达到理论极限的机器代码”，并且对其设计理念大加赞赏。对编程语言有兴趣的话可以去试着读读这篇文章。<del>当然他在扯淡。</del></p>
 <p>　　Chez Scheme 的编译组件原本被作为商业软件出售，但前些日子作者<del>似乎心情大好于是</del>将其在 Github 上开源了，所以现在我们能够一睹其源码的芳容。</p>
 <span id="more"></span>
+
 <p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://cisco.github.io/ChezScheme/">Chez Scheme 项目主页</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 
         <h4 id="关于本文">
-          <a href="#关于本文" class="heading-link"><i class="fas fa-link"></i></a>关于本文</h4>
-      
-<p>　　Chez Scheme 作者在其“构建说明” (即 BUILDING 文件) 中将 Windows 下的编译过程描述为 “more complicated than it should be” (本不应该那么麻烦)，从作者的描述中可以隐约看出他大概为了优先兼容 Linux 和 OS X 下的编译过程做出了无奈的妥协。笔者刚开始研究编译其源码时，并不使用 Visual Studio ，在没有现成教程的情况下，自己不断尝试了两周后才摸出了正确的编译配置。为此笔者想写一篇简单的教程，帮助想要体验 Scheme 之美而又不想把时间浪费在研究 Visual Studio 与 Git 以及编译环境配置等等这些无关问题上的读者，使他们能够跳过这些无关内容，直接根据笔者提供的经验与方法对 Chez Scheme 进行编译，快速进入学习的核心环节。由于笔者本身对 Visual Studio 与 Git 没有很深的研究，行文过程中的错误在所难免，希望各位读者发现后不吝赐教，笔者在此先行致谢。</p>
-<p>　　那么回到正文。这篇文章将指导你自己动手编译<del>也许是</del>世界上最好的 Scheme 实现，但不会包含 Scheme 语法相关的任何内容。如果想对 Scheme 进行深入研究，笔者建议去阅读 <a href="http://%20%3Chttp://www.scheme.com/tspl4/%3E">Scheme 程序设计语言 (The Scheme Programming Language)</a> (Chez Scheme 作者所著，完美贴合 Chez Scheme 的实现)，而对于 Chez Scheme 的使用以及一些细节， 则可参阅 <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://cisco.github.io/ChezScheme/csug9.4/csug.html">Chez Scheme 9 使用指南 (Chez Scheme Version 9 User's Guide)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>。</p>
+          <a href="#关于本文" class="heading-link"><i class="fas fa-link"></i></a><a href="#关于本文" class="headerlink" title="关于本文"></a>关于本文</h4>
+      <p>　　Chez Scheme 作者在其“构建说明” (即 BUILDING 文件) 中将 Windows 下的编译过程描述为 “more complicated than it should be” (本不应该那么麻烦)，从作者的描述中可以隐约看出他大概为了优先兼容 Linux 和 OS X 下的编译过程做出了无奈的妥协。笔者刚开始研究编译其源码时，并不使用 Visual Studio ，在没有现成教程的情况下，自己不断尝试了两周后才摸出了正确的编译配置。为此笔者想写一篇简单的教程，帮助想要体验 Scheme 之美而又不想把时间浪费在研究 Visual Studio 与 Git 以及编译环境配置等等这些无关问题上的读者，使他们能够跳过这些无关内容，直接根据笔者提供的经验与方法对 Chez Scheme 进行编译，快速进入学习的核心环节。由于笔者本身对 Visual Studio 与 Git 没有很深的研究，行文过程中的错误在所难免，希望各位读者发现后不吝赐教，笔者在此先行致谢。</p>
+<p>　　那么回到正文。这篇文章将指导你自己动手编译<del>也许是</del>世界上最好的 Scheme 实现，但不会包含 Scheme 语法相关的任何内容。如果想对 Scheme 进行深入研究，笔者建议去阅读 [Scheme 程序设计语言 (The Scheme Programming Language)](http:// <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://www.scheme.com/tspl4/">http://www.scheme.com/tspl4/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>) (Chez Scheme 作者所著，完美贴合 Chez Scheme 的实现)，而对于 Chez Scheme 的使用以及一些细节， 则可参阅 <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://cisco.github.io/ChezScheme/csug9.4/csug.html">Chez Scheme 9 使用指南 (Chez Scheme Version 9 User’s Guide)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>。</p>
 
-        <h4 id="安装-visual-studio">
-          <a href="#安装-visual-studio" class="heading-link"><i class="fas fa-link"></i></a>安装 Visual Studio</h4>
-      
-<p>　　在Windows 环境下编译 Chez Scheme 需要 Visual C 编译器的支持，为此我们需要安装一份 Visual Studio。</p>
+        <h4 id="安装-Visual-Studio">
+          <a href="#安装-Visual-Studio" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装-Visual-Studio" class="headerlink" title="安装 Visual Studio"></a>安装 Visual Studio</h4>
+      <p>　　在Windows 环境下编译 Chez Scheme 需要 Visual C 编译器的支持，为此我们需要安装一份 Visual Studio。</p>
 <p>　　<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.visualstudio.com/zh-cn/downloads/download-visual-studio-vs.aspx">Visual Studio 官网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 <p>　　进入后按下图下载Commmunity(即社区版，亦称个人版或免费版)</p>
 <p>　　<img src="/uploads/chez_scheme_compiling_guide/01.png"></p>
@@ -211,10 +208,9 @@ mjx-container[display="true"] + br {
 <p>　　<img src="/uploads/chez_scheme_compiling_guide/06.png"></p>
 <p>　　接下来要做的是安装一个带 Bash 的 Git 。</p>
 
-        <h4 id="安装-git">
-          <a href="#安装-git" class="heading-link"><i class="fas fa-link"></i></a>安装 Git</h4>
-      
-<p>　　<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://git-scm.com/download">Git 官网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+        <h4 id="安装-Git">
+          <a href="#安装-Git" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h4>
+      <p>　　<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://git-scm.com/download">Git 官网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 <p>　　<img src="/uploads/chez_scheme_compiling_guide/07.png"></p>
 <p>　　如果因为某些特殊原因无法直接从官网下载，可以考虑去一些国内比较大的软件收录网站看看。</p>
 <p>　　这是笔者找到的分流点：</p>
@@ -228,9 +224,8 @@ mjx-container[display="true"] + br {
 <p>　　选择一个<em>最好不要带中文与特殊字符的目录</em>的文件夹，然后在里面右键点开 Git Bash。这个文件夹内随后会生成一个子文件夹 chezscheme ，而这个被生成的文件夹就是我们之后要用到的<strong>工作目录</strong>。笔者在演示中的工作目录为<code>C:/Github/chezscheme</code></p>
 
         <h4 id="获取源代码">
-          <a href="#获取源代码" class="heading-link"><i class="fas fa-link"></i></a>获取源代码</h4>
-      
-<p>　　往你的 Bash 里敲入以下代码然后按下 Enter 键</p>
+          <a href="#获取源代码" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取源代码" class="headerlink" title="获取源代码"></a>获取源代码</h4>
+      <p>　　往你的 Bash 里敲入以下代码然后按下 Enter 键</p>
 <p>　　<code>git clone https://github.com/cisco/chezscheme</code></p>
 <p>　　<img src="/uploads/chez_scheme_compiling_guide/11.png"></p>
 <p>　　当出现如下图像时，代表你成功从服务器获取了一份 Chez Scheme 的源代码。</p>
@@ -238,9 +233,8 @@ mjx-container[display="true"] + br {
 <p>　　让我们开始为编译环节做准备。</p>
 
         <h4 id="设置环境变量">
-          <a href="#设置环境变量" class="heading-link"><i class="fas fa-link"></i></a>设置环境变量</h4>
-      
-<p>　　环境变量设置环节部分在 BUILDING 文件里并没有详细提到，笔者之前自行编译时主要在这一步上浪费了不少时间。</p>
+          <a href="#设置环境变量" class="heading-link"><i class="fas fa-link"></i></a><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4>
+      <p>　　环境变量设置环节部分在 BUILDING 文件里并没有详细提到，笔者之前自行编译时主要在这一步上浪费了不少时间。</p>
 <p>　　此电脑-右键-属性</p>
 <p>　　<img src="/uploads/chez_scheme_compiling_guide/13.png"></p>
 <p>　　点击左侧的“高级系统设置”</p>
@@ -250,20 +244,19 @@ mjx-container[display="true"] + br {
 <p>　　在用户变量框里点击新建，然后分别加入如下环境变量：</p>
 <p>　　<img src="/uploads/chez_scheme_compiling_guide/16.png"></p>
 <blockquote>
-<p>path <code>C:/Program Files/Microsoft Visual Studio 14.0/VC/bin;C:/Program Files/Windows Kits/8.1/bin/x86</code></p>
+<p>path<br><code>C:/Program Files/Microsoft Visual Studio 14.0/VC/bin;C:/Program Files/Windows Kits/8.1/bin/x86</code></p>
 </blockquote>
 <blockquote>
-<p>lib <code>C:/Program Files/Microsoft Visual Studio 14.0/VC/lib;C:/Program Files/Windows Kits/10/Lib/10.0.10240.0/ucrt/x86;C:/Program Files/Windows Kits/8.1/Lib/winv6.3/um/x86</code></p>
+<p>lib<br><code>C:/Program Files/Microsoft Visual Studio 14.0/VC/lib;C:/Program Files/Windows Kits/10/Lib/10.0.10240.0/ucrt/x86;C:/Program Files/Windows Kits/8.1/Lib/winv6.3/um/x86</code></p>
 </blockquote>
 <blockquote>
-<p>include <code>C:/Program Files/Microsoft Visual Studio 14.0/VC/include;C:/Program Files/Microsoft SDKs/Windows/v7.1A/Include;C:/Program Files/Windows Kits/10/Include/10.0.10240.0/ucrt</code></p>
+<p>include<br><code>C:/Program Files/Microsoft Visual Studio 14.0/VC/include;C:/Program Files/Microsoft SDKs/Windows/v7.1A/Include;C:/Program Files/Windows Kits/10/Include/10.0.10240.0/ucrt</code></p>
 </blockquote>
 <p>　　然后点击确定回到属性面板，把它关闭，接下来我们回到 Git Bash 上。</p>
 
         <h4 id="配置编译目标">
-          <a href="#配置编译目标" class="heading-link"><i class="fas fa-link"></i></a>配置编译目标</h4>
-      
-<p>　　如果你还没有关闭 Bash，那么只要输入</p>
+          <a href="#配置编译目标" class="heading-link"><i class="fas fa-link"></i></a><a href="#配置编译目标" class="headerlink" title="配置编译目标"></a>配置编译目标</h4>
+      <p>　　如果你还没有关闭 Bash，那么只要输入</p>
 <p>　　<code>cd chezscheme</code></p>
 <p>　　就可以使它进入工作目录。但如果你已经关闭了，没关系，打开工作目录，右键再开一个就行。</p>
 <p>　　随后使用指令</p>
@@ -278,9 +271,8 @@ mjx-container[display="true"] + br {
 <p>　　<img src="/uploads/chez_scheme_compiling_guide/19.png"></p>
 
         <h4 id="开始编译">
-          <a href="#开始编译" class="heading-link"><i class="fas fa-link"></i></a>开始编译</h4>
-      
-<p>　　做了如此多的准备工作之后，我们终于可以开始编译了。关闭 Bash，进入<code>工作目录/i3nt/c</code>，按住Shift+右键，在弹出的栏目中选择“在此处打开命令窗口”</p>
+          <a href="#开始编译" class="heading-link"><i class="fas fa-link"></i></a><a href="#开始编译" class="headerlink" title="开始编译"></a>开始编译</h4>
+      <p>　　做了如此多的准备工作之后，我们终于可以开始编译了。关闭 Bash，进入<code>工作目录/i3nt/c</code>，按住Shift+右键，在弹出的栏目中选择“在此处打开命令窗口”</p>
 <p>　　<img src="/uploads/chez_scheme_compiling_guide/20.png"></p>
 <p>　　然后在弹出的窗口中输入</p>
 <p>　　<code>nmake -f Makefile.i3nt</code></p>
@@ -290,11 +282,11 @@ mjx-container[display="true"] + br {
 <p>　　但打开 <code>工作目录/i3nt/bin/i3nt</code> 目录，你会发现其实程序已经编译成功了。但程序并不能打开，双击只会看到黑色的窗口一闪而过。要使它能够运行，我们还要再做些工作。现在可以关闭你的编译窗口了。</p>
 
         <h4 id="运行与测试">
-          <a href="#运行与测试" class="heading-link"><i class="fas fa-link"></i></a>运行与测试</h4>
-      
-<p>　　要使 Chez Scheme 能够运行，我们还需要再设置一个环境变量，但笔者认为这样太过繁琐，而且一旦工作目录改变还得重新设置，所以笔者换了一种方法，即使用一个引导程序来为 Chez Scheme 设置临时环境变量。</p>
+          <a href="#运行与测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#运行与测试" class="headerlink" title="运行与测试"></a>运行与测试</h4>
+      <p>　　要使 Chez Scheme 能够运行，我们还需要再设置一个环境变量，但笔者认为这样太过繁琐，而且一旦工作目录改变还得重新设置，所以笔者换了一种方法，即使用一个引导程序来为 Chez Scheme 设置临时环境变量。</p>
 <p>　　具体做法是在 <code>工作目录/i3nt/bin/i3nt</code> 内新建一个文本文档，打开它，输入以下代码：</p>
 <figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">set "SCHEMEHEAPDIRS=../../boot/i3nt"</span><br><span class="line">scheme.exe</span><br></pre></td></tr></table></div></figure>
+
 <p>　　然后将文件名保存为<code>launch.bat</code>。</p>
 <p>　　<img src="/uploads/chez_scheme_compiling_guide/23.png"></p>
 <p>　　是时候收获成功的喜悦了。打开你创建的引导程序。你将会见到也许是世界上最先进的编程语言的交互环境。</p>
@@ -308,11 +300,11 @@ mjx-container[display="true"] + br {
 <p>最终在某个下午，你会完全理解Scheme和它的标准，但在那之前没有人会知道需要度过多少个让人觉得满头雾水的下午。</p>
 </blockquote>
 <p>　　那么，这篇教程到这里也就要结束了，但我们的 Scheme 学习之路才刚刚开始，而且这条学习之路将无疑是漫长而又坎坷的。但是无论如何，都请保持着这样的信念：<em>享受编程，享受生活！</em></p>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://kale1d0.space">φKN1GHT</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://kale1d0.space/chez_scheme_compiling_guide/">https://kale1d0.space/chez_scheme_compiling_guide/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://kale1d0.space/tags/Scheme/">Scheme</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://kale1d0.space/tags/%E8%BF%87%E6%9C%9F%E5%86%85%E5%AE%B9/">过期内容</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/a-scientific-debugging-technique/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">对拍：科学的排错方法</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/noip2015-and-the-daily-life-of-a-math-fan/"><span class="paginator-prev__text">NOIP2015行记与数学菜狗的日常</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A5%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E5%B7%B2%E8%BF%87%E6%9C%9F%E4%BB%85%E5%8F%AF%E7%94%A8%E4%BA%8E%E5%8F%82%E8%80%83%E4%BD%9C%E8%80%85%E6%9A%82%E4%B8%8D%E6%89%93%E7%AE%97%E6%9B%B4%E6%96%B0"><span class="toc-number">1.</span> <span class="toc-text">
-          该文章内容已过期，仅可用于参考，作者暂不打算更新</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-chez-scheme"><span class="toc-number">1.0.1.</span> <span class="toc-text">
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://kale1d0.space">φKN1GHT</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://kale1d0.space/chez_scheme_compiling_guide/">https://kale1d0.space/chez_scheme_compiling_guide/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://kale1d0.space/tags/Scheme/">Scheme</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://kale1d0.space/tags/%E8%BF%87%E6%9C%9F%E5%86%85%E5%AE%B9/">过期内容</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/a-scientific-debugging-technique/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">对拍：科学的排错方法</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/noip2015-and-the-daily-life-of-a-math-fan/"><span class="paginator-prev__text">NOIP2015行记与数学菜狗的日常</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A5%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E5%B7%B2%E8%BF%87%E6%9C%9F%EF%BC%8C%E4%BB%85%E5%8F%AF%E7%94%A8%E4%BA%8E%E5%8F%82%E8%80%83%EF%BC%8C%E4%BD%9C%E8%80%85%E6%9A%82%E4%B8%8D%E6%89%93%E7%AE%97%E6%9B%B4%E6%96%B0"><span class="toc-number">1.</span> <span class="toc-text">
+          该文章内容已过期，仅可用于参考，作者暂不打算更新</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-Chez-Scheme"><span class="toc-number">1.0.1.</span> <span class="toc-text">
           关于 Chez Scheme</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E6%96%87"><span class="toc-number">1.0.2.</span> <span class="toc-text">
-          关于本文</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-visual-studio"><span class="toc-number">1.0.3.</span> <span class="toc-text">
-          安装 Visual Studio</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-git"><span class="toc-number">1.0.4.</span> <span class="toc-text">
+          关于本文</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Visual-Studio"><span class="toc-number">1.0.3.</span> <span class="toc-text">
+          安装 Visual Studio</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Git"><span class="toc-number">1.0.4.</span> <span class="toc-text">
           安装 Git</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="toc-number">1.0.5.</span> <span class="toc-text">
           获取源代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.6.</span> <span class="toc-text">
           设置环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%BC%96%E8%AF%91%E7%9B%AE%E6%A0%87"><span class="toc-number">1.0.7.</span> <span class="toc-text">
