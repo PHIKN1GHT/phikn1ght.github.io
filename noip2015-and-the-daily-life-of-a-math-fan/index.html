@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="google-site-verification" content="gSBLPbJXcbvjsNlEmPsrS4hVK5vfm6v41c2aAGtVM1k"><meta name="msvalidate.01" content="8F5C00D474F3C2F3FBA67DB2A220529E"><meta name="baidu-site-verification" content="code-UUStnJ1ZKN"><meta name="description" content="上周双休日，我校算法竞赛小组前去参加NOIP复赛。 　　刚到门口就见到了Erwin菊苣学长，讨论了一番今年题目可能出的内容，然后其他人跟着源霸陆陆续续得也来了。其实前晚我背了所有图论基本搜索算法就指望能遇到一个图论水题……然而我背得东西直到DAY2也没有用上。拿着准考证和学生证，再一次感叹了一下华二校园的广阔与华美后，我们一行人进入了教学楼。就在教学楼门口，一个身形巨大的神犇拿着准考证经过我们">
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="google-site-verification" content="gSBLPbJXcbvjsNlEmPsrS4hVK5vfm6v41c2aAGtVM1k"><meta name="msvalidate.01" content="8F5C00D474F3C2F3FBA67DB2A220529E"><meta name="baidu-site-verification" content="code-UUStnJ1ZKN"><meta name="description" content="上周双休日，我校算法竞赛小组前去参加NOIP复赛。 　　刚到门口就见到了Erwin菊苣学长，讨论了一番今年题目可能出的内容，然后其他人跟着源霸陆陆续续得也来了。其实前晚我背了所有图论基本搜索算法就指望能遇到一个图论水题……然而我背得东西直到DAY2也没有用上。拿着准考证和学生证，再一次感叹了一下华二校园的广阔与华美后，我们一行人进入了教学楼。就在教学楼门口，一个身形巨大的神犇拿着准考证经过我">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NOIP2015行记与数学菜狗的日常">
 <meta property="og:url" content="https://kale1d0.space/noip2015-and-the-daily-life-of-a-math-fan/index.html">
 <meta property="og:site_name" content="旅人札记">
-<meta property="og:description" content="上周双休日，我校算法竞赛小组前去参加NOIP复赛。 　　刚到门口就见到了Erwin菊苣学长，讨论了一番今年题目可能出的内容，然后其他人跟着源霸陆陆续续得也来了。其实前晚我背了所有图论基本搜索算法就指望能遇到一个图论水题……然而我背得东西直到DAY2也没有用上。拿着准考证和学生证，再一次感叹了一下华二校园的广阔与华美后，我们一行人进入了教学楼。就在教学楼门口，一个身形巨大的神犇拿着准考证经过我们">
+<meta property="og:description" content="上周双休日，我校算法竞赛小组前去参加NOIP复赛。 　　刚到门口就见到了Erwin菊苣学长，讨论了一番今年题目可能出的内容，然后其他人跟着源霸陆陆续续得也来了。其实前晚我背了所有图论基本搜索算法就指望能遇到一个图论水题……然而我背得东西直到DAY2也没有用上。拿着准考证和学生证，再一次感叹了一下华二校园的广阔与华美后，我们一行人进入了教学楼。就在教学楼门口，一个身形巨大的神犇拿着准考证经过我">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2015-11-11T11:09:25.000Z">
 <meta property="article:modified_time" content="2022-02-06T11:31:59.028Z">
@@ -156,7 +156,7 @@ mjx-container[display="true"] + br {
 <p>　　聊了一下昨天的题目，感觉今天会有图论。果不其然，看到卷子后，第三题就是。</p>
 <p>　　先不管它，肝了前两题再说。</p>
 <p>　　第一题，恩……恩……这什么鬼……！</p>
-<p>　　没想到什么好方法，直接模拟又肯定会爆几个点，我抱着希望数据能水点的心态直接从FP库里拉了一段快排，就对整个数列的差值直接排序取n+1项输出。然后开肝第二题。一开始我以为应该挺好写的，从要匹配的内容出发，先拆成数个字符串，然后依次在所给的字符串里面找，每次找的时候从游标位置开始，找完以后更新游标。后来写着写着就发现编程复杂度太高了，于是我换了ansistring来，想直接用自带的字符串操作去实现。结果我试了将近三刻钟才试出copy这个函数的正确用法。<br>继续闷头写。</p>
+<p>　　没想到什么好方法，直接模拟又肯定会爆几个点，我抱着希望数据能水点的心态直接从FP库里拉了一段快排，就对整个数列的差值直接排序取n+1项输出。然后开肝第二题。一开始我以为应该挺好写的，从要匹配的内容出发，先拆成数个字符串，然后依次在所给的字符串里面找，每次找的时候从游标位置开始，找完以后更新游标。后来写着写着就发现编程复杂度太高了，于是我换了ansistring来，想直接用自带的字符串操作去实现。结果我试了将近三刻钟才试出copy这个函数的正确用法。 继续闷头写。</p>
 <p>　　看看时间，卧槽，还有一个小时……来不及了吧……</p>
 <p>　　再看看第三题，似乎不那么好骗分，于是我决定咬咬牙继续写第二题。结果没写完ORZ 于是第二题和第三题都是直接Randomlize然后Random(数据上限)输出的。</p>
 <p>　　DAY1估分100+60+10=170分</p>
