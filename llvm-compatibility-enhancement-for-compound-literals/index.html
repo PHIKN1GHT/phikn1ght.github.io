@@ -1,0 +1,637 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="google-site-verification" content="gSBLPbJXcbvjsNlEmPsrS4hVK5vfm6v41c2aAGtVM1k"><meta name="msvalidate.01" content="8F5C00D474F3C2F3FBA67DB2A220529E"><meta name="baidu-site-verification" content="code-UUStnJ1ZKN"><meta name="description" content="问题描述        　　Compound Literals是一个C99特性，GCC和LLVM都对其做了拓展，支持在C++中使用该特性，但在具体的实现上有一定的差异，这也导致了LLVM与GCC存在一定的兼容性问题。例如下述代码，GCC可以编译通过，LLVM则会编译报错。  1234typedef struct FormatInfo_ { int * a &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Compound Literals特性LLVM兼容性增强">
+<meta property="og:url" content="https://kale1d0.space/llvm-compatibility-enhancement-for-compound-literals/index.html">
+<meta property="og:site_name" content="旅人札记">
+<meta property="og:description" content="问题描述        　　Compound Literals是一个C99特性，GCC和LLVM都对其做了拓展，支持在C++中使用该特性，但在具体的实现上有一定的差异，这也导致了LLVM与GCC存在一定的兼容性问题。例如下述代码，GCC可以编译通过，LLVM则会编译报错。  1234typedef struct FormatInfo_ { int * a &#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-04T09:05:24.480Z">
+<meta property="article:author" content="φKN1GHT">
+<meta property="article:tag" content="LLVM">
+<meta property="article:tag" content="Clang">
+<meta property="article:tag" content="Compiler">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta name="twitter:card" content="summary"><title>Compound Literals特性LLVM兼容性增强 | 旅人札记</title><link ref="canonical" href="https://kale1d0.space/llvm-compatibility-enhancement-for-compound-literals/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: {"avoidBanner":true},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.2"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://kale1d0.space/"><span class="header-nav-submenu-item__icon"><i class="fas fa-blog"></i></span><span class="header-nav-submenu-item__text">主站</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" target="_blank" rel="noopener" href="https://phikn1ght.github.io/"><span class="header-nav-submenu-item__icon"><i class="fas fa-clone"></i></span><span class="header-nav-submenu-item__text">Github镜像站</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-address-card"></i></span><span class="header-nav-menu-item__text">关于</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/friend_links/"><span class="header-nav-menu-item__icon"><i class="fas fa-arrows-alt"></i></span><span class="header-nav-menu-item__text">友链</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Compound Literals特性LLVM兼容性增强</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2023-08-04</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2023-08-04</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
+        <h1 id="问题描述">
+          <a href="#问题描述" class="heading-link"><i class="fas fa-link"></i></a><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1>
+      <blockquote>
+<p>　　Compound Literals是一个C99特性，GCC和LLVM都对其做了拓展，支持在C++中使用该特性，但在具体的实现上有一定的差异，这也导致了LLVM与GCC存在一定的兼容性问题。例如下述代码，GCC可以编译通过，LLVM则会编译报错。</p>
+</blockquote>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">FormatInfo_</span> {</span> <span class="keyword">int</span> * a = <span class="literal">nullptr</span>; <span class="keyword">bool</span> isa = <span class="literal">false</span>; } FormatInfo;</span><br><span class="line"><span class="keyword">int</span> * b = <span class="literal">nullptr</span>;</span><br><span class="line">FormatInfo a = (FormatInfo) {b, <span class="literal">false</span>};</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">test</span><span class="params">( )</span> </span>{ <span class="keyword">return</span> <span class="number">0</span>; }</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>　　请分析GCC及LLVM对Compound Literals的C++拓展的实现，通过修改LLVM的实现，解决上述问题。并基于上述场景，分析LLVM与GCC在该特性的C++拓展实现上的差异，分析改特性是否存在其他场景也存在兼容性问题，给出对应的分析文档。若有其他存在兼容性问题的场景，修改实现解决。</p>
+</blockquote>
+
+        <h2 id="最小例程">
+          <a href="#最小例程" class="heading-link"><i class="fas fa-link"></i></a><a href="#最小例程" class="headerlink" title="最小例程"></a>最小例程</h2>
+      <p>　　可以验证，将上述例程化简至如下最小例程后，LLVM(Clang)与GCC的表现均<strong>与化简前相同</strong>：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DT</span> {</span> <span class="keyword">int</span> * el;};</span><br><span class="line"><span class="keyword">int</span> * pa = <span class="number">0</span>;</span><br><span class="line">DT va = (DT){pa};</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="初步观察">
+          <a href="#初步观察" class="heading-link"><i class="fas fa-link"></i></a><a href="#初步观察" class="headerlink" title="初步观察"></a>初步观察</h2>
+      <p>　　用LLVM对上述最小例程进行编译，得到的报错提示如下：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test.cc:3:14: error: initializer element is not a compile-time constant</span><br><span class="line">DT va = (DT){pa};</span><br><span class="line">             ^~</span><br><span class="line">1 error generated</span><br></pre></td></tr></table></div></figure>
+
+<p>　　报错提示编译器拒绝将变量<code>pa</code>接受为一个初始化器的元素，因为<code>pa</code>并非一个编译期常量。<strong>尝试修改<code>DT va = (DT){pa};</code>至<code>DT va = {pa};</code>，则能够通过编译。另一个观察是，将<code>int * pa = 0;</code>修改为<code>constexpr int * pa = 0;</code>或者<code>int * const pa = 0;</code>，则也均能通过编译</strong>。</p>
+
+        <h1 id="GCC的处理方式">
+          <a href="#GCC的处理方式" class="heading-link"><i class="fas fa-link"></i></a><a href="#GCC的处理方式" class="headerlink" title="GCC的处理方式"></a>GCC的处理方式</h1>
+      <p>　　首先尝试界定出GCC的能力范围。将上述最小例程进行复杂化。对于如下例程，LLVM与GCC的表现均与复杂化前相同：</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DT</span> {</span> <span class="keyword">int</span> * el;};</span><br><span class="line"><span class="keyword">int</span> ia;<span class="keyword">int</span> * pa = (<span class="keyword">int</span> *)(<span class="keyword">long</span>)(ia[&amp;ia + ia]++);</span><br><span class="line">DT va = (DT){pa};</span><br></pre></td></tr></table></div></figure>
+
+<p>　　显然，此时变量<code>pa</code>已经很难被称作是一个<code>compile-time constant</code>。此时，若在其类型声明前增加关键字<code>constexpr</code>，则两个编译器都拒绝接受该例程。而奇怪的现象却发生了：<strong>若在变量名前增加<code>const</code>关键字，则LLVM依旧会拒绝这段例程，但GCC却能让其通过编译</strong>。在此，先将这一现象简单总结为：在GCC中<code>const</code>关键字对全局变量的限制要比在LLVM中更少一些。</p>
+
+        <h2 id="处理过程定位">
+          <a href="#处理过程定位" class="heading-link"><i class="fas fa-link"></i></a><a href="#处理过程定位" class="headerlink" title="处理过程定位"></a>处理过程定位</h2>
+      <p>　　那么GCC具体是怎么处理这里的待初始化元素的？接下来尝试从其实现代码层面（基于本文写作时GCC官方代码仓库的<code>releases/gcc-13</code>分支上的最新提交<code>c7d995dfb155</code>）上进行分析。从直觉上来看，该特性的实现应该位于编译器前端。在GCC中，编译前端涉及到的阶段有：预处理、分词、语法分析、语义分析等。在GCC的C语言前端处理过程中，源码会被依次转换为GENERIC(AST)、GIMPLE。</p>
+<p>　　那么首先试着定位出该特性生效的位置。在编译最小例程时对gcc使用参数<code>-fdump-tree-all-raw</code>：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> SRC=test.cc</span><br><span class="line"><span class="built_in">export</span> DST=test.o</span><br><span class="line">./gcc -c <span class="variable">$SRC</span> -fdump-tree-raw -o <span class="variable">$DST</span></span><br></pre></td></tr></table></div></figure>
+
+<p>　　随后编译器会将许多中间过程写入文件。先从未经优化的GIMPLE看起。</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test.cc.006t.gimple</span></span><br><span class="line"><span class="keyword">void</span> __static_initialization_and_destruction_0 ()</span><br><span class="line">gimple_bind &lt;</span><br><span class="line">  gimple_assign &lt;var_decl, pa<span class="number">.0</span>_1, pa, <span class="literal">NULL</span>, <span class="literal">NULL</span>&gt;</span><br><span class="line">  gimple_assign &lt;ssa_name, va.el, pa<span class="number">.0</span>_1, <span class="literal">NULL</span>, <span class="literal">NULL</span>&gt;</span><br><span class="line">&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> _GLOBAL__sub_I_pa ()</span><br><span class="line">gimple_bind &lt;</span><br><span class="line">  gimple_call &lt;__static_initialization_and_destruction_0, <span class="literal">NULL</span>&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>　　可以发现，此时的程序结构已经与源码文件大相径庭。函数外部的变量声明代码都消失了，取而代之的是两个函数，其前缀分别为<code>__static_initialization_and_destruction</code>（本文之后缩写为<code>SIAD</code>函数）与<code>_GLOBAL__sub_I</code>（本文之后缩写为<code>GSI</code>函数）。真正初始化的过程被移动到了前一个函数内，而后一个函数又会调用前者。</p>
+<p>　　首先在GCC源代码中检索前一个函数前缀，发现其被以宏<code>SSDF_IDENTIFIER</code>的形式定义于<code>gcc/cp/decl2.cc</code>。对于后一个函数前缀，直接在GCC源码中进行检索时并未发现任何定义，但查阅<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://stackoverflow.com/questions/37108163/purpose-of-static-initialization-and-destruction-and-global-sub-i-main-functio">资料</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>得知其实际为提供给链接器使用的特殊前缀，**用于在<code>main</code>函数执行之前被执行，以初始化本翻译单元内所有静态存储变量(Static Storage Variable)**。</p>
+<p>　　回到处理过程的定位问题上。既然在GIMPLE表示中，代码源文件中使用的声明形式就以消失（被转换至函数内），那么说明处理过程一定不会发生在这之后的编译优化环节中。考虑向前追溯，观察其在GENERIC阶段的形式。</p>
+<p>　　在GCC中，GENERIC阶段的表示实际上就是抽象语法树(Abstract Syntax Tree)，对应的是GCC源码中的<code>tree_node</code>结构体。继续使用先前提到的调试输出参数时，会以类似N元组列表的形式输出该表示，也可以通过源码<code>gcc/print-tree.cc</code>中的<code>debug_tree</code>函数来向标准错误流打印出树形结构的内容。这里选取前者的结果作为示例。</p>
+<figure class="highlight sh"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test.cc.005t.original</span></span><br><span class="line">;; Function void __static_initialization_and_destruction_0() (null)</span><br><span class="line">;; enabled by -tree-original</span><br><span class="line"></span><br><span class="line">@1      statement_list   0   : @2       1   : @3</span><br><span class="line">@2      cleanup_point_expr <span class="built_in">type</span>: @4       op 0: @5</span><br><span class="line">@3      expr_stmt        <span class="built_in">type</span>: @4       line: 3        expr: @6</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">;; Function (static initializers <span class="keyword">for</span> ../test.cc) (null)</span><br><span class="line">;; enabled by -tree-original</span><br><span class="line"></span><br><span class="line">@1      cleanup_point_expr <span class="built_in">type</span>: @2       op 0: @3</span><br><span class="line">@2      void_type        name: @4       algn: 8</span><br><span class="line">@3      expr_stmt        <span class="built_in">type</span>: @2       line: 3        expr: @5</span><br><span class="line">...</span><br></pre></td></tr></table></div></figure>
+
+<p>　　观察可知，此时声明形式也已经被转化至函数内，因此需要去GENERIC的生成阶段寻找处理过程。从前往后看的话，显然预处理、词法分析和语法分析阶段都不可能进行这样的处理，那么转换过程<strong>只可能会发生在语义分析环节中</strong>。通过对源码各个阶段追加输出日志，可以观察到<code>SIAD</code>函数与<code>GSI</code>函数的创建过程发生于语法分析的末尾阶段。<strong>具体来说，分别位于代码文件<code>gcc/cp/decl2.cc</code>中定义的<code>partition_vars_for_init_fini</code>、<code>emit_partial_init_fini_fn</code>与<code>generate_ctor_or_dtor_function</code>这三个函数中</strong>。</p>
+
+        <h2 id="处理过程分析">
+          <a href="#处理过程分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#处理过程分析" class="headerlink" title="处理过程分析"></a>处理过程分析</h2>
+      <p>　　首先，<code>partition_vars_for_init_fini</code>函数会将静态存储变量按不同优先级组成多个列表。</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span></span><br><span class="line">partition_vars_for_init_fini (tree var_list, <span class="keyword">priority_map_t</span> *(&amp;parts)[<span class="number">2</span>])</span><br><span class="line">{</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> node = var_list; node; node = TREE_CHAIN (node))</span><br><span class="line">    {</span><br><span class="line">      tree decl = TREE_VALUE (node);</span><br><span class="line">      tree init = TREE_PURPOSE (node);</span><br><span class="line">      <span class="keyword">bool</span> has_cleanup = !TYPE_HAS_TRIVIAL_DESTRUCTOR (TREE_TYPE (decl));</span><br><span class="line">      <span class="keyword">unsigned</span> priority = DECL_EFFECTIVE_INIT_PRIORITY (decl); </span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (init || (flag_use_cxa_atexit &amp;&amp; has_cleanup))</span><br><span class="line">	{</span><br><span class="line">	  <span class="keyword">if</span> (!parts[<span class="literal">true</span>]) <span class="comment">// 这里用true作为下标，用于表示初始化列表，反之用false作为下表来表示销毁列表。</span></span><br><span class="line">	    parts[<span class="literal">true</span>] = <span class="keyword">priority_map_t</span>::create_ggc ();</span><br><span class="line">	  <span class="keyword">auto</span> &amp;slot = parts[<span class="literal">true</span>]-&gt;get_or_insert (priority);</span><br><span class="line">	  slot = tree_cons (init, decl, slot); <span class="comment">// 将对应的声明与逻辑上的初始化（即变量结点的PURPOSE）相关联</span></span><br><span class="line">	}</span><br><span class="line">    <span class="comment">// 省略部分无关代码</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></div></figure>
+
+<p>　　随后，<code>emit_partial_init_fini_fn</code>函数会为各个静态存储变量生成对应的<code>SIAD</code>函数的声明与定义。</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 针对每个变量生成对应的初始化与销毁函数（即SIAD函数）</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span></span><br><span class="line">emit_partial_init_fini_fn (<span class="keyword">bool</span> initp, <span class="keyword">unsigned</span> priority, tree vars,</span><br><span class="line">			   <span class="keyword">unsigned</span> counter, <span class="keyword">location_t</span> locus)</span><br><span class="line">{</span><br><span class="line">  input_location = locus;</span><br><span class="line">  <span class="comment">/* 生成函数声明 */</span></span><br><span class="line">  tree body = start_partial_init_fini_fn (initp, priority, counter);</span><br><span class="line">  <span class="keyword">for</span> (tree node = vars; node; node = TREE_CHAIN (node)) {</span><br><span class="line">    <span class="comment">/* 生成函数体 */</span></span><br><span class="line">    one_static_initialization_or_destruction (initp, TREE_VALUE (node),</span><br><span class="line">					      TREE_PURPOSE (node));</span><br><span class="line">  }</span><br><span class="line">  input_location = locus;</span><br><span class="line">  finish_partial_init_fini_fn (body);</span><br><span class="line">} <span class="comment">// 省略部分无关代码，补充了少量注释</span></span><br></pre></td></tr></table></div></figure>
+
+<p>　　最后，<code>generate_ctor_or_dtor_function</code>函数则会生成<code>GSI</code>函数的定义，也即依次调用先前生成的<code>SIAD</code>函数**。</p>
+<figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span></span><br><span class="line">generate_ctor_or_dtor_function (<span class="keyword">bool</span> initp, <span class="keyword">unsigned</span> priority,</span><br><span class="line">				tree fns, <span class="keyword">location_t</span> locus)</span><br><span class="line">{</span><br><span class="line">  input_location = locus;</span><br><span class="line">  tree body = start_objects (initp, priority, <span class="keyword">bool</span> (fns));</span><br><span class="line">  <span class="keyword">if</span> (fns)</span><br><span class="line">    {</span><br><span class="line">      <span class="comment">/* Call the static init/fini functions.  */</span></span><br><span class="line">      <span class="keyword">for</span> (tree node = fns; node; node = TREE_CHAIN (node))</span><br><span class="line">	{</span><br><span class="line">	  tree fn = TREE_PURPOSE (node);</span><br><span class="line">	  <span class="comment">// We should never find a pure or constant cdtor.</span></span><br><span class="line">	  gcc_checking_assert (!(flags_from_decl_or_type (fn)</span><br><span class="line">				 &amp; (ECF_CONST | ECF_PURE)));</span><br><span class="line"></span><br><span class="line">	  tree call = cp_build_function_call_nary (fn, tf_warning_or_error,</span><br><span class="line">						   NULL_TREE); <span class="comment">// 此处的call即是对SIAD函数的调用</span></span><br><span class="line">	  finish_expr_stmt (call);</span><br><span class="line">	}</span><br><span class="line">    }</span><br><span class="line">} <span class="comment">// 省略部分无关代码</span></span><br></pre></td></tr></table></div></figure>
+
+<p>　　那么，在回顾完整个过程后，便可以回到前面提到的那个奇怪现象，也即为什么“在GCC中<code>const</code>关键字对全局变量的限制要比在LLVM中更少一些”。容易发现，如果修改前面给出的复杂化例程，将变量va的声明移至任意函数作用域内，则使用LLVM编译时也会顺利通过编译。<strong>这表明了LLVM针对静态存储变量的初始化也许采取了与GCC差异较大的方式，也即并没有像GCC那样通过创建<code>SIAD</code>函数的形式来为其进行初始化</strong>。</p>
+
+        <h1 id="LLVM的处理方式">
+          <a href="#LLVM的处理方式" class="heading-link"><i class="fas fa-link"></i></a><a href="#LLVM的处理方式" class="headerlink" title="LLVM的处理方式"></a>LLVM的处理方式</h1>
+      <p>　　（仍在分析中，本段待编写）</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://kale1d0.space">φKN1GHT</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://kale1d0.space/llvm-compatibility-enhancement-for-compound-literals/">https://kale1d0.space/llvm-compatibility-enhancement-for-compound-literals/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://kale1d0.space/tags/LLVM/">LLVM</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://kale1d0.space/tags/Clang/">Clang</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://kale1d0.space/tags/Compiler/">Compiler</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://kale1d0.space/tags/C-C/">C/C++</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/yet-another-web-log/"><span class="paginator-prev__text">新样式，新起点</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">
+          问题描述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E4%BE%8B%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">
+          最小例程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E8%A7%82%E5%AF%9F"><span class="toc-number">1.2.</span> <span class="toc-text">
+          初步观察</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GCC%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">
+          GCC的处理方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B%E5%AE%9A%E4%BD%8D"><span class="toc-number">2.1.</span> <span class="toc-text">
+          处理过程定位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90"><span class="toc-number">2.2.</span> <span class="toc-text">
+          处理过程分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LLVM%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">
+          LLVM的处理方式</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/avatar.png" alt="avatar"></div><p class="sidebar-ov-author__text">Keep reading &amp; writing.</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/PHIKN1GHT" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">33</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">23</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>φKN1GHT</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.2</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">访问人数</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">浏览总量</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-banner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"><script type="text/x-mathjax-config">var mathjaxMhchem = '';
+var mathJaxTex = {
+  equationNumbers: {
+    autoNumber: 'AMS'
+  }
+};
+
+if (false) {
+  mathjaxMhchem = 'https://cdn.jsdelivr.net/npm/mathjax-mhchem@3.3.2/mhchem.min.js';
+  MathJax.Ajax.config.path['mhchem'] = mathjaxMhchem;
+
+  mathJaxTex.extensions = [mathjaxMhchem];
+} else {
+  mathJaxTex.extensions = ['AMSmath.js','AMSsymbols.js'];
+}
+
+MathJax.Hub.Config({
+  menuSettings: {
+    zoom: 'None'
+  },
+  showMathMenu: false,
+  jax: ['input/TeX','output/CommonHTML'],
+  extensions: ['tex2jax.js'],
+  TeX: mathJaxTex,
+  tex2jax: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  }
+});
+
+MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+  MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+    if (data.display) {
+      var next = data.script.nextSibling;
+      while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling; }
+      if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next); }
+    }
+  });
+});
+
+MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i = 0; i < all.length; i++) {
+    document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: 'e6f542f5d584c1d1a9fc',
+    clientSecret: '54d060079b578ff1ae2efd681994dfdcd5c889de',
+    repo: 'phikn1ght.github.io',
+    owner: 'PHIKN1GHT',
+    admin: ['PHIKN1GHT'],
+    distractionFreeMode: 'false',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (true) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script><script type="application/json" src="/search.json"></script></body></html>
