@@ -1,12 +1,12 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="google-site-verification" content="gSBLPbJXcbvjsNlEmPsrS4hVK5vfm6v41c2aAGtVM1k"><meta name="msvalidate.01" content="8F5C00D474F3C2F3FBA67DB2A220529E"><meta name="baidu-site-verification" content="code-UUStnJ1ZKN"><meta name="description" content="问题描述        　　Compound Literals是一个C99特性，GCC和LLVM都对其做了拓展，支持在C++中使用该特性，但在具体的实现上有一定的差异，这也导致了LLVM与GCC存在一定的兼容性问题。例如下述代码，GCC可以编译通过，LLVM则会编译报错。  1234typedef struct FormatInfo_ { int * a &#x3D;">
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="google-site-verification" content="gSBLPbJXcbvjsNlEmPsrS4hVK5vfm6v41c2aAGtVM1k"><meta name="msvalidate.01" content="8F5C00D474F3C2F3FBA67DB2A220529E"><meta name="baidu-site-verification" content="code-UUStnJ1ZKN"><meta name="description" content="问题描述        　　Compound Literals是一个C99特性，GCC和LLVM都对其做了拓展，支持在C++中使用该特性，但在具体的实现上有一定的差异，这也导致了LLVM与GCC存在一定的兼容性问题。例如下述代码，GCC可以编译通过，LLVM则会编译报错。  1234typedef struct FormatInfo_ { int * a &#x3D; nullptr;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Compound Literals特性LLVM兼容性增强">
 <meta property="og:url" content="https://kale1d0.space/llvm-compatibility-enhancement-for-compound-literals/index.html">
 <meta property="og:site_name" content="旅人札记">
-<meta property="og:description" content="问题描述        　　Compound Literals是一个C99特性，GCC和LLVM都对其做了拓展，支持在C++中使用该特性，但在具体的实现上有一定的差异，这也导致了LLVM与GCC存在一定的兼容性问题。例如下述代码，GCC可以编译通过，LLVM则会编译报错。  1234typedef struct FormatInfo_ { int * a &#x3D;">
+<meta property="og:description" content="问题描述        　　Compound Literals是一个C99特性，GCC和LLVM都对其做了拓展，支持在C++中使用该特性，但在具体的实现上有一定的差异，这也导致了LLVM与GCC存在一定的兼容性问题。例如下述代码，GCC可以编译通过，LLVM则会编译报错。  1234typedef struct FormatInfo_ { int * a &#x3D; nullptr;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-15T13:30:36.795Z">
+<meta property="article:modified_time" content="2023-08-15T13:33:01.190Z">
 <meta property="article:author" content="φKN1GHT">
 <meta property="article:tag" content="LLVM">
 <meta property="article:tag" content="GCC">
@@ -161,7 +161,7 @@ mjx-container[display="true"] + br {
 <figure class="highlight c++"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">FormatInfo_</span> {</span> <span class="keyword">int</span> * a = <span class="literal">nullptr</span>; <span class="keyword">bool</span> isa = <span class="literal">false</span>; } FormatInfo;</span><br><span class="line"><span class="keyword">int</span> * b = <span class="literal">nullptr</span>;</span><br><span class="line">FormatInfo a = (FormatInfo) {b, <span class="literal">false</span>};</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">test</span><span class="params">( )</span> </span>{ <span class="keyword">return</span> <span class="number">0</span>; }</span><br></pre></td></tr></table></div></figure>
 
 <blockquote>
-<p>　　请分析GCC及LLVM对Compound Literals的C++拓展的实现，通过修改LLVM的实现，解决上述问题。并基于上述场景，分析LLVM与GCC在该特性的C++拓展实现上的差异，分析改特性是否存在其他场景也存在兼容性问题，给出对应的分析文档。若有其他存在兼容性问题的场景，修改实现解决。</p>
+<p>　　请分析GCC及LLVM对Compound Literals的C++拓展的实现，通过修改LLVM的实现，解决上述问题。并基于上述场景，分析LLVM与GCC在该特性的C++拓展实现上的差异，分析改特性是否存在其他场景也存在兼容性问题，给出对应的分析文档。若有其他存在兼容性问题的场景，修改实现解决。<span id="more"></span></p>
 </blockquote>
 
         <h2 id="最小例程">
