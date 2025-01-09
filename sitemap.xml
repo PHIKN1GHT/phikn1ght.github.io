@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kale1d0.space/how-to-pass-n2-in-a-half-year/</loc>
+    
+    <lastmod>2025-01-09</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://kale1d0.space/about-efpc-2019/</loc>
     
     <lastmod>2025-01-09</lastmod>
@@ -72,13 +79,6 @@
   </url>
   
   <url>
-    <loc>https://kale1d0.space/how-to-pass-n2-in-a-half-year/</loc>
-    
-    <lastmod>2023-08-15</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://kale1d0.space/friend_links/index.html</loc>
     
     <lastmod>2022-05-23</lastmod>
@@ -87,13 +87,6 @@
   
   <url>
     <loc>https://kale1d0.space/a-barren-story/</loc>
-    
-    <lastmod>2022-02-10</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://kale1d0.space/research-log-2019-09/</loc>
     
     <lastmod>2022-02-10</lastmod>
     
@@ -284,20 +277,6 @@
   </url>
   
   <url>
-    <loc>https://kale1d0.space/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kale1d0.space/tags/%E7%A0%B4%E4%BA%8B%E6%B0%B4/</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://kale1d0.space/tags/%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>daily</changefreq>
@@ -333,6 +312,20 @@
   </url>
   
   <url>
+    <loc>https://kale1d0.space/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kale1d0.space/tags/%E7%A0%B4%E4%BA%8B%E6%B0%B4/</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://kale1d0.space/tags/%E7%AE%97%E6%B3%95%EF%BC%88%E5%B9%BF%E4%B9%89%E7%9A%84%EF%BC%89/</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>daily</changefreq>
@@ -354,28 +347,7 @@
   </url>
   
   <url>
-    <loc>https://kale1d0.space/tags/Scheme/</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kale1d0.space/tags/%E8%BF%87%E6%9C%9F%E5%86%85%E5%AE%B9/</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://kale1d0.space/tags/pypbbot/</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kale1d0.space/tags/%E4%B8%8A%E6%B5%B7%E5%9B%BD%E9%99%85%E7%94%B5%E5%BD%B1%E8%8A%82/</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -389,7 +361,7 @@
   </url>
   
   <url>
-    <loc>https://kale1d0.space/tags/%E6%91%84%E5%BD%B1/</loc>
+    <loc>https://kale1d0.space/tags/%E4%B8%8A%E6%B5%B7%E5%9B%BD%E9%99%85%E7%94%B5%E5%BD%B1%E8%8A%82/</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -424,6 +396,27 @@
   </url>
   
   <url>
+    <loc>https://kale1d0.space/tags/Scheme/</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kale1d0.space/tags/%E8%BF%87%E6%9C%9F%E5%86%85%E5%AE%B9/</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kale1d0.space/tags/%E6%91%84%E5%BD%B1/</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://kale1d0.space/tags/Unity3D/</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>daily</changefreq>
@@ -432,13 +425,6 @@
   
   <url>
     <loc>https://kale1d0.space/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kale1d0.space/tags/%E7%A0%94%E7%A9%B6%E6%97%A5%E5%BF%97/</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
